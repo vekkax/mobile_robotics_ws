@@ -1,0 +1,17 @@
+[5.070s] Invoking command in '/home/vekkaz/mobile_robotics_ws/build/scan_pkg': PYTHONPATH=/home/vekkaz/mobile_robotics_ws/build/scan_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vekkaz/mobile_robotics_ws/install/scan_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vekkaz/mobile_robotics_ws/build/scan_pkg/build --no-deps symlink_data
+[5.339s] running develop
+[5.624s] running egg_info
+[5.624s] writing scan_pkg.egg-info/PKG-INFO
+[5.625s] writing dependency_links to scan_pkg.egg-info/dependency_links.txt
+[5.625s] writing entry points to scan_pkg.egg-info/entry_points.txt
+[5.625s] writing requirements to scan_pkg.egg-info/requires.txt
+[5.625s] writing top-level names to scan_pkg.egg-info/top_level.txt
+[5.627s] reading manifest file 'scan_pkg.egg-info/SOURCES.txt'
+[5.628s] writing manifest file 'scan_pkg.egg-info/SOURCES.txt'
+[5.629s] running build_ext
+[5.630s] Creating /home/vekkaz/mobile_robotics_ws/install/scan_pkg/lib/python3.10/site-packages/scan-pkg.egg-link (link to .)
+[5.630s] Installing scan_node script to /home/vekkaz/mobile_robotics_ws/install/scan_pkg/lib/scan_pkg
+[5.631s] 
+[5.631s] Installed /home/vekkaz/mobile_robotics_ws/build/scan_pkg
+[5.631s] running symlink_data
+[5.678s] Invoked command in '/home/vekkaz/mobile_robotics_ws/build/scan_pkg' returned '0': PYTHONPATH=/home/vekkaz/mobile_robotics_ws/build/scan_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vekkaz/mobile_robotics_ws/install/scan_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vekkaz/mobile_robotics_ws/build/scan_pkg/build --no-deps symlink_data
