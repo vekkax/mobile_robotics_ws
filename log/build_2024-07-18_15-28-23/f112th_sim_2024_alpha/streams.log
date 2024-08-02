@@ -1,0 +1,41 @@
+[0.008s] Invoking command in '/home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_G01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake /home/vekkaz/mobile_robotics_ws/src/f112th_sim_2024_alpha -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha
+[0.018s] -- Found ament_cmake: 1.3.9 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.115s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.119s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.183s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.186s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.187s] -- Added test 'lint_cmake' to check CMake code style
+[0.187s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.189s] -- Added test 'xmllint' to check XML markup files
+[0.190s] -- Configuring done
+[0.192s] -- Generating done
+[0.192s] -- Build files have been written to: /home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha
+[0.195s] Invoked command in '/home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_G01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake /home/vekkaz/mobile_robotics_ws/src/f112th_sim_2024_alpha -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha
+[0.196s] Invoking command in '/home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_G01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --build /home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha -- -j12 -l12
+[0.223s] Invoked command in '/home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_G01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --build /home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha -- -j12 -l12
+[0.245s] Invoking command in '/home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_G01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --install /home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha
+[0.250s] -- Install configuration: ""
+[0.250s] -- Execute custom install script
+[0.251s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/config/empty.yaml
+[0.257s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/inertial_macros.xacro
+[0.264s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/properties.urdf.xacro
+[0.270s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/robot.urdf.xacro
+[0.276s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/robot_core.xacro
+[0.283s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/launch/rsp.launch.py
+[0.289s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/worlds/empty.world
+[0.296s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/ament_index/resource_index/package_run_dependencies/f112th_sim_2024_alpha
+[0.301s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/ament_index/resource_index/parent_prefix_path/f112th_sim_2024_alpha
+[0.309s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/environment/ament_prefix_path.sh
+[0.315s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/environment/ament_prefix_path.dsv
+[0.321s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/environment/path.sh
+[0.328s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/environment/path.dsv
+[0.334s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/local_setup.bash
+[0.341s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/local_setup.sh
+[0.348s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/local_setup.zsh
+[0.354s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/local_setup.dsv
+[0.361s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.dsv
+[0.368s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/ament_index/resource_index/packages/f112th_sim_2024_alpha
+[0.375s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/cmake/f112th_sim_2024_alphaConfig.cmake
+[0.382s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/cmake/f112th_sim_2024_alphaConfig-version.cmake
+[0.389s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.xml
+[0.400s] Invoked command in '/home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_G01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --install /home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha

@@ -1,0 +1,15 @@
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/ament_index/resource_index/package_run_dependencies/f11th_sim_2024_alpha
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/ament_index/resource_index/parent_prefix_path/f11th_sim_2024_alpha
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/environment/ament_prefix_path.sh
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/environment/ament_prefix_path.dsv
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/environment/path.sh
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/environment/path.dsv
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/local_setup.bash
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/local_setup.sh
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/local_setup.zsh
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/local_setup.dsv
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/package.dsv
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/ament_index/resource_index/packages/f11th_sim_2024_alpha
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/cmake/f11th_sim_2024_alphaConfig.cmake
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/cmake/f11th_sim_2024_alphaConfig-version.cmake
+/home/vekkaz/mobile_robotics_ws/install/f11th_sim_2024_alpha/share/f11th_sim_2024_alpha/package.xml

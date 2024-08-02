@@ -1,0 +1,3 @@
+[console_scripts]
+scan_node = scan_pkg.scan_node:main
+

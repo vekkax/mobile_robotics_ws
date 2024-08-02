@@ -1,0 +1,38 @@
+[0.051s] Invoking command in '/home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/mobile_robotics_ws/install/joy_tester:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --build /home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha -- -j12 -l12
+[0.513s] Invoked command in '/home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/mobile_robotics_ws/install/joy_tester:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --build /home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha -- -j12 -l12
+[0.535s] Invoking command in '/home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/mobile_robotics_ws/install/joy_tester:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --install /home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha
+[0.570s] -- Install configuration: ""
+[0.590s] -- Execute custom install script
+[0.590s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/config/empty.yaml
+[0.591s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/config/joystick.yaml
+[0.591s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/gazebo_control.xacro
+[0.591s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/inertial_macros.xacro
+[0.591s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/lidar.xacro
+[0.592s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/properties.urdf.xacro
+[0.592s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/robot.urdf.xacro
+[0.592s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/robot_core.xacro
+[0.592s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/description/rviz_model.rviz
+[0.592s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/launch/joystick.launch.py
+[0.592s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/launch/launch_sim.launch.py
+[0.593s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/launch/rsp.launch.py
+[0.593s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/worlds/1st_world_v2.world
+[0.593s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/worlds/empty.world
+[0.593s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/worlds/wall/model.config
+[0.594s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/worlds/wall/model.sdf
+[0.594s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/worlds/worldy_world.world
+[0.594s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/ament_index/resource_index/package_run_dependencies/f112th_sim_2024_alpha
+[0.595s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/ament_index/resource_index/parent_prefix_path/f112th_sim_2024_alpha
+[0.595s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/environment/ament_prefix_path.sh
+[0.595s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/environment/ament_prefix_path.dsv
+[0.595s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/environment/path.sh
+[0.596s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/environment/path.dsv
+[0.596s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/local_setup.bash
+[0.596s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/local_setup.sh
+[0.596s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/local_setup.zsh
+[0.596s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/local_setup.dsv
+[0.597s] -- Symlinking: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.dsv
+[0.613s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/ament_index/resource_index/packages/f112th_sim_2024_alpha
+[0.613s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/cmake/f112th_sim_2024_alphaConfig.cmake
+[0.613s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/cmake/f112th_sim_2024_alphaConfig-version.cmake
+[0.614s] -- Up-to-date symlink: /home/vekkaz/mobile_robotics_ws/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.xml
+[0.618s] Invoked command in '/home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/mobile_robotics_ws/install/joy_tester:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --install /home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha

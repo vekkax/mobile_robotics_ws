@@ -1,0 +1,237 @@
+[0.425s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.426s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7a165ae53670>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7a165ae53100>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7a165ae53100>>)
+[0.665s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.665s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.665s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.665s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.665s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.665s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.665s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/vekkaz/mobile_robotics_ws/src'
+[0.665s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.665s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.665s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.665s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.665s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.665s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.665s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.665s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.665s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(f112th_sim_2024_alpha) by extensions ['ignore', 'ignore_ament_install']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(f112th_sim_2024_alpha) by extension 'ignore'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(f112th_sim_2024_alpha) by extension 'ignore_ament_install'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(f112th_sim_2024_alpha) by extensions ['colcon_pkg']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(f112th_sim_2024_alpha) by extension 'colcon_pkg'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(f112th_sim_2024_alpha) by extensions ['colcon_meta']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(f112th_sim_2024_alpha) by extension 'colcon_meta'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(f112th_sim_2024_alpha) by extensions ['ros']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(f112th_sim_2024_alpha) by extension 'ros'
+[0.675s] DEBUG:colcon.colcon_core.package_identification:Package 'f112th_sim_2024_alpha' with type 'ros.ament_cmake' and name 'f112th_sim_2024_alpha'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(joy_tester) by extensions ['ignore', 'ignore_ament_install']
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(joy_tester) by extension 'ignore'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(joy_tester) by extension 'ignore_ament_install'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(joy_tester) by extensions ['colcon_pkg']
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(joy_tester) by extension 'colcon_pkg'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(joy_tester) by extensions ['colcon_meta']
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(joy_tester) by extension 'colcon_meta'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(joy_tester) by extensions ['ros']
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(joy_tester) by extension 'ros'
+[0.740s] DEBUG:colcon.colcon_core.package_identification:Package 'joy_tester' with type 'ros.ament_python' and name 'joy_tester'
+[0.741s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.741s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.741s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.741s] Level 1:colcon.colcon_core.package_identification:_identify(scan_pkg) by extensions ['ignore', 'ignore_ament_install']
+[0.741s] Level 1:colcon.colcon_core.package_identification:_identify(scan_pkg) by extension 'ignore'
+[0.741s] Level 1:colcon.colcon_core.package_identification:_identify(scan_pkg) by extension 'ignore_ament_install'
+[0.741s] Level 1:colcon.colcon_core.package_identification:_identify(scan_pkg) by extensions ['colcon_pkg']
+[0.741s] Level 1:colcon.colcon_core.package_identification:_identify(scan_pkg) by extension 'colcon_pkg'
+[0.742s] Level 1:colcon.colcon_core.package_identification:_identify(scan_pkg) by extensions ['colcon_meta']
+[0.742s] Level 1:colcon.colcon_core.package_identification:_identify(scan_pkg) by extension 'colcon_meta'
+[0.742s] Level 1:colcon.colcon_core.package_identification:_identify(scan_pkg) by extensions ['ros']
+[0.742s] Level 1:colcon.colcon_core.package_identification:_identify(scan_pkg) by extension 'ros'
+[0.743s] DEBUG:colcon.colcon_core.package_identification:Package 'scan_pkg' with type 'ros.ament_python' and name 'scan_pkg'
+[0.743s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.743s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.743s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.743s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.743s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.845s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.845s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.022s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 4 installed packages in /home/vekkaz/mobile_robotics_ws/install
+[1.023s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/vekkaz/ros2_ws_tutorial/install
+[1.024s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 5 installed packages in /home/vekkaz/ros2_ws_2401/install
+[1.027s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 391 installed packages in /opt/ros/humble
+[1.052s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.199s] Level 5:colcon.colcon_core.verb:set package 'f112th_sim_2024_alpha' build argument 'cmake_args' from command line to 'None'
+[1.199s] Level 5:colcon.colcon_core.verb:set package 'f112th_sim_2024_alpha' build argument 'cmake_target' from command line to 'None'
+[1.199s] Level 5:colcon.colcon_core.verb:set package 'f112th_sim_2024_alpha' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.199s] Level 5:colcon.colcon_core.verb:set package 'f112th_sim_2024_alpha' build argument 'cmake_clean_cache' from command line to 'False'
+[1.199s] Level 5:colcon.colcon_core.verb:set package 'f112th_sim_2024_alpha' build argument 'cmake_clean_first' from command line to 'False'
+[1.199s] Level 5:colcon.colcon_core.verb:set package 'f112th_sim_2024_alpha' build argument 'cmake_force_configure' from command line to 'False'
+[1.199s] Level 5:colcon.colcon_core.verb:set package 'f112th_sim_2024_alpha' build argument 'ament_cmake_args' from command line to 'None'
+[1.199s] Level 5:colcon.colcon_core.verb:set package 'f112th_sim_2024_alpha' build argument 'catkin_cmake_args' from command line to 'None'
+[1.199s] Level 5:colcon.colcon_core.verb:set package 'f112th_sim_2024_alpha' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.199s] DEBUG:colcon.colcon_core.verb:Building package 'f112th_sim_2024_alpha' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha', 'merge_install': False, 'path': '/home/vekkaz/mobile_robotics_ws/src/f112th_sim_2024_alpha', 'symlink_install': True, 'test_result_base': None}
+[1.200s] Level 5:colcon.colcon_core.verb:set package 'joy_tester' build argument 'cmake_args' from command line to 'None'
+[1.200s] Level 5:colcon.colcon_core.verb:set package 'joy_tester' build argument 'cmake_target' from command line to 'None'
+[1.200s] Level 5:colcon.colcon_core.verb:set package 'joy_tester' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.200s] Level 5:colcon.colcon_core.verb:set package 'joy_tester' build argument 'cmake_clean_cache' from command line to 'False'
+[1.200s] Level 5:colcon.colcon_core.verb:set package 'joy_tester' build argument 'cmake_clean_first' from command line to 'False'
+[1.200s] Level 5:colcon.colcon_core.verb:set package 'joy_tester' build argument 'cmake_force_configure' from command line to 'False'
+[1.200s] Level 5:colcon.colcon_core.verb:set package 'joy_tester' build argument 'ament_cmake_args' from command line to 'None'
+[1.200s] Level 5:colcon.colcon_core.verb:set package 'joy_tester' build argument 'catkin_cmake_args' from command line to 'None'
+[1.201s] Level 5:colcon.colcon_core.verb:set package 'joy_tester' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.201s] DEBUG:colcon.colcon_core.verb:Building package 'joy_tester' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/vekkaz/mobile_robotics_ws/src/build/joy_tester', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester', 'merge_install': False, 'path': '/home/vekkaz/mobile_robotics_ws/src/joy_tester', 'symlink_install': True, 'test_result_base': None}
+[1.201s] Level 5:colcon.colcon_core.verb:set package 'scan_pkg' build argument 'cmake_args' from command line to 'None'
+[1.201s] Level 5:colcon.colcon_core.verb:set package 'scan_pkg' build argument 'cmake_target' from command line to 'None'
+[1.201s] Level 5:colcon.colcon_core.verb:set package 'scan_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.201s] Level 5:colcon.colcon_core.verb:set package 'scan_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[1.201s] Level 5:colcon.colcon_core.verb:set package 'scan_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[1.201s] Level 5:colcon.colcon_core.verb:set package 'scan_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[1.201s] Level 5:colcon.colcon_core.verb:set package 'scan_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[1.201s] Level 5:colcon.colcon_core.verb:set package 'scan_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[1.202s] Level 5:colcon.colcon_core.verb:set package 'scan_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.202s] DEBUG:colcon.colcon_core.verb:Building package 'scan_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/vekkaz/mobile_robotics_ws/src/build/scan_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg', 'merge_install': False, 'path': '/home/vekkaz/mobile_robotics_ws/src/scan_pkg', 'symlink_install': True, 'test_result_base': None}
+[1.202s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.204s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.204s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/vekkaz/mobile_robotics_ws/src/f112th_sim_2024_alpha' with build type 'ament_cmake'
+[1.205s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/vekkaz/mobile_robotics_ws/src/f112th_sim_2024_alpha'
+[1.212s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.212s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.212s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.231s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/vekkaz/mobile_robotics_ws/src/joy_tester' with build type 'ament_python'
+[1.231s] Level 1:colcon.colcon_core.shell:create_environment_hook('joy_tester', 'ament_prefix_path')
+[1.231s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/hook/ament_prefix_path.ps1'
+[1.242s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/hook/ament_prefix_path.dsv'
+[1.244s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/hook/ament_prefix_path.sh'
+[1.245s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.246s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.253s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/vekkaz/mobile_robotics_ws/src/scan_pkg' with build type 'ament_python'
+[1.253s] Level 1:colcon.colcon_core.shell:create_environment_hook('scan_pkg', 'ament_prefix_path')
+[1.254s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/hook/ament_prefix_path.ps1'
+[1.255s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/hook/ament_prefix_path.dsv'
+[1.255s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/hook/ament_prefix_path.sh'
+[1.256s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.256s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.293s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/mobile_robotics_ws/install/joy_tester:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake /home/vekkaz/mobile_robotics_ws/src/f112th_sim_2024_alpha -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha
+[1.808s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/vekkaz/mobile_robotics_ws/src/joy_tester'
+[1.809s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.809s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.147s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/vekkaz/mobile_robotics_ws/src/scan_pkg'
+[2.148s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.148s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[6.869s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/vekkaz/mobile_robotics_ws/src/build/joy_tester': PYTHONPATH=/home/vekkaz/mobile_robotics_ws/src/build/joy_tester/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vekkaz/mobile_robotics_ws/src/build/joy_tester/build --no-deps symlink_data
+[6.873s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/vekkaz/mobile_robotics_ws/src/build/scan_pkg': PYTHONPATH=/home/vekkaz/mobile_robotics_ws/src/build/scan_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vekkaz/mobile_robotics_ws/src/build/scan_pkg/build --no-deps symlink_data
+[7.675s] Level 1:colcon.colcon_core.shell:create_environment_hook('scan_pkg', 'pythonpath_develop')
+[7.676s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/build/scan_pkg/share/scan_pkg/hook/pythonpath_develop.ps1'
+[7.677s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/vekkaz/mobile_robotics_ws/src/build/scan_pkg' returned '0': PYTHONPATH=/home/vekkaz/mobile_robotics_ws/src/build/scan_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vekkaz/mobile_robotics_ws/src/build/scan_pkg/build --no-deps symlink_data
+[7.678s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/vekkaz/mobile_robotics_ws/src/build/scan_pkg/share/scan_pkg/hook/pythonpath_develop.dsv'
+[7.679s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/build/scan_pkg/share/scan_pkg/hook/pythonpath_develop.sh'
+[7.772s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg' for CMake module files
+[7.773s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg' for CMake config files
+[7.774s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/lib'
+[7.775s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/bin'
+[7.775s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/lib/pkgconfig/scan_pkg.pc'
+[7.775s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/lib/python3.10/site-packages'
+[7.775s] Level 1:colcon.colcon_core.shell:create_environment_hook('scan_pkg', 'pythonpath')
+[7.776s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/hook/pythonpath.ps1'
+[7.776s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/hook/pythonpath.dsv'
+[7.777s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/hook/pythonpath.sh'
+[7.778s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/bin'
+[7.778s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(scan_pkg)
+[7.779s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/package.ps1'
+[7.835s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/package.dsv'
+[7.856s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/package.sh'
+[7.858s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/package.bash'
+[7.872s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/scan_pkg/package.zsh'
+[7.887s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/vekkaz/mobile_robotics_ws/src/install/scan_pkg/share/colcon-core/packages/scan_pkg)
+[7.889s] Level 1:colcon.colcon_core.shell:create_environment_hook('joy_tester', 'pythonpath_develop')
+[7.890s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/build/joy_tester/share/joy_tester/hook/pythonpath_develop.ps1'
+[7.891s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/vekkaz/mobile_robotics_ws/src/build/joy_tester' returned '0': PYTHONPATH=/home/vekkaz/mobile_robotics_ws/src/build/joy_tester/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vekkaz/mobile_robotics_ws/src/build/joy_tester/build --no-deps symlink_data
+[7.892s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/vekkaz/mobile_robotics_ws/src/build/joy_tester/share/joy_tester/hook/pythonpath_develop.dsv'
+[7.892s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/build/joy_tester/share/joy_tester/hook/pythonpath_develop.sh'
+[7.893s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester' for CMake module files
+[7.894s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester' for CMake config files
+[7.895s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/lib'
+[7.895s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/bin'
+[7.895s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/lib/pkgconfig/joy_tester.pc'
+[7.895s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/lib/python3.10/site-packages'
+[7.895s] Level 1:colcon.colcon_core.shell:create_environment_hook('joy_tester', 'pythonpath')
+[7.896s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/hook/pythonpath.ps1'
+[7.896s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/hook/pythonpath.dsv'
+[7.897s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/hook/pythonpath.sh'
+[7.898s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/bin'
+[7.898s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(joy_tester)
+[7.898s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/package.ps1'
+[7.900s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/package.dsv'
+[7.901s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/package.sh'
+[7.901s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/package.bash'
+[7.902s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/joy_tester/package.zsh'
+[7.902s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/vekkaz/mobile_robotics_ws/src/install/joy_tester/share/colcon-core/packages/joy_tester)
+[11.469s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/mobile_robotics_ws/install/joy_tester:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake /home/vekkaz/mobile_robotics_ws/src/f112th_sim_2024_alpha -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha
+[11.474s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/mobile_robotics_ws/install/joy_tester:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --build /home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha -- -j12 -l12
+[11.529s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/mobile_robotics_ws/install/joy_tester:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --build /home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha -- -j12 -l12
+[11.576s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/mobile_robotics_ws/install/joy_tester:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --install /home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha
+[12.113s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(f112th_sim_2024_alpha)
+[12.114s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha' for CMake module files
+[12.114s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/vekkaz/mobile_robotics_ws/install/joy_tester:/home/vekkaz/ros2_ws_2401/install/turtle_move_pkg_g01:/home/vekkaz/ros2_ws_2401/install/turtle_move_2_pkg_g01:/home/vekkaz/ros2_ws_2401/install/robotcar_base_pkg_g01:/home/vekkaz/ros2_ws_2401/install/model_robot_pkg_g01:/home/vekkaz/ros2_ws_2401/install/launch_pkg_g01:/home/vekkaz/ros2_ws_tutorial/install/robot_control:/opt/ros/humble /usr/bin/cmake --install /home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha
+[12.116s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha' for CMake config files
+[12.116s] Level 1:colcon.colcon_core.shell:create_environment_hook('f112th_sim_2024_alpha', 'cmake_prefix_path')
+[12.117s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/hook/cmake_prefix_path.ps1'
+[12.117s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/hook/cmake_prefix_path.dsv'
+[12.118s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/hook/cmake_prefix_path.sh'
+[12.119s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/bin'
+[12.119s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/lib/pkgconfig/f112th_sim_2024_alpha.pc'
+[12.119s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/lib/python3.10/site-packages'
+[12.120s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/bin'
+[12.120s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.ps1'
+[12.121s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.dsv'
+[12.122s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.sh'
+[12.122s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.bash'
+[12.123s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.zsh'
+[12.123s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/colcon-core/packages/f112th_sim_2024_alpha)
+[12.162s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(f112th_sim_2024_alpha)
+[12.163s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha' for CMake module files
+[12.164s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha' for CMake config files
+[12.164s] Level 1:colcon.colcon_core.shell:create_environment_hook('f112th_sim_2024_alpha', 'cmake_prefix_path')
+[12.164s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/hook/cmake_prefix_path.ps1'
+[12.165s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/hook/cmake_prefix_path.dsv'
+[12.166s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/hook/cmake_prefix_path.sh'
+[12.167s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/bin'
+[12.167s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/lib/pkgconfig/f112th_sim_2024_alpha.pc'
+[12.167s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/lib/python3.10/site-packages'
+[12.168s] Level 1:colcon.colcon_core.environment:checking '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/bin'
+[12.168s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.ps1'
+[12.169s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.dsv'
+[12.170s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.sh'
+[12.170s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.bash'
+[12.171s] INFO:colcon.colcon_core.shell:Creating package script '/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/f112th_sim_2024_alpha/package.zsh'
+[12.171s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/vekkaz/mobile_robotics_ws/src/install/f112th_sim_2024_alpha/share/colcon-core/packages/f112th_sim_2024_alpha)
+[12.172s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[12.173s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[12.173s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[12.173s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[12.308s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[12.308s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[12.308s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[12.338s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[12.339s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/vekkaz/mobile_robotics_ws/src/install/local_setup.ps1'
+[12.371s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/vekkaz/mobile_robotics_ws/src/install/_local_setup_util_ps1.py'
+[12.382s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/vekkaz/mobile_robotics_ws/src/install/setup.ps1'
+[12.384s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/vekkaz/mobile_robotics_ws/src/install/local_setup.sh'
+[12.390s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/vekkaz/mobile_robotics_ws/src/install/_local_setup_util_sh.py'
+[12.391s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/vekkaz/mobile_robotics_ws/src/install/setup.sh'
+[12.394s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/vekkaz/mobile_robotics_ws/src/install/local_setup.bash'
+[12.406s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/vekkaz/mobile_robotics_ws/src/install/setup.bash'
+[12.409s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/vekkaz/mobile_robotics_ws/src/install/local_setup.zsh'
+[12.422s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/vekkaz/mobile_robotics_ws/src/install/setup.zsh'

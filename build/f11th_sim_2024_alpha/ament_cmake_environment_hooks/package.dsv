@@ -1,0 +1,4 @@
+source;share/f11th_sim_2024_alpha/local_setup.bash
+source;share/f11th_sim_2024_alpha/local_setup.dsv
+source;share/f11th_sim_2024_alpha/local_setup.sh
+source;share/f11th_sim_2024_alpha/local_setup.zsh

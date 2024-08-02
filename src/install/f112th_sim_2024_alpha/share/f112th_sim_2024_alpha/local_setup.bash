@@ -1,0 +1,1 @@
+/home/vekkaz/mobile_robotics_ws/src/build/f112th_sim_2024_alpha/ament_cmake_environment_hooks/local_setup.bash
