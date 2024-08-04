@@ -4,8 +4,8 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
-from geometry_msgs.msg import Point
 from geometry_msgs.msg import Twist
+from std_msgs.msg import Float32MultiArray
 
 import math
 import sys
@@ -18,25 +18,27 @@ class DistFinder(Node):  # Redefine node class
         self.pose_subs = self.create_subscription(
             LaserScan, "/scan", self.scan_callback, 10
         )
-        self.error_pub = self.create_publisher(Point, "/Error", 10)
+        self.error_pub = self.create_publisher(Float32MultiArray, "/Error", 10)
         self.cmd_vel=self.create_publisher(Twist, "/cmd_vel_nav", 10)
 
         self.Trajd = 1.0
         self.CD = float()
 
         self.vel=Twist()
-        self.vel.linear.x=0.8
+        self.vel.linear.x=0.3
 
-    def scan_callback(self, data):
+    def scan_callback(self, data:LaserScan):
         self.get_range(data, 20)
-        error = Point()
-        error.y = self.Trajd - self.CD
+        
+        error = [self.Trajd - self.CD, data.scan_time]
+        
         if sys.argv[1] == "y":
+
             self.cmd_vel.publish(self.vel)
         elif sys.argv[1]== "n":
             pass
-
-        self.error_pub.publish(error)
+        
+        self.error_pub.publish(Float32MultiArray(data=error))
 
     def get_range(self, data, theta):
         AC = 1.0

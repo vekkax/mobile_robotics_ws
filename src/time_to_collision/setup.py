@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'time_to_collision_node = time_to_collision.time_to_collision_node:main',
         ],
     },
 )
