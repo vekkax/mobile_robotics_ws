@@ -1,0 +1,17 @@
+[3.586s] Invoking command in '/home/vekkaz/mobile_robotics_ws/build/time_to_collision': PYTHONPATH=/home/vekkaz/mobile_robotics_ws/build/time_to_collision/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vekkaz/mobile_robotics_ws/install/time_to_collision/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vekkaz/mobile_robotics_ws/build/time_to_collision/build --no-deps symlink_data
+[3.964s] running develop
+[4.287s] running egg_info
+[4.288s] writing time_to_collision.egg-info/PKG-INFO
+[4.288s] writing dependency_links to time_to_collision.egg-info/dependency_links.txt
+[4.288s] writing entry points to time_to_collision.egg-info/entry_points.txt
+[4.288s] writing requirements to time_to_collision.egg-info/requires.txt
+[4.288s] writing top-level names to time_to_collision.egg-info/top_level.txt
+[4.291s] reading manifest file 'time_to_collision.egg-info/SOURCES.txt'
+[4.292s] writing manifest file 'time_to_collision.egg-info/SOURCES.txt'
+[4.294s] running build_ext
+[4.295s] Creating /home/vekkaz/mobile_robotics_ws/install/time_to_collision/lib/python3.10/site-packages/time-to-collision.egg-link (link to .)
+[4.297s] Installing time_to_collision_node script to /home/vekkaz/mobile_robotics_ws/install/time_to_collision/lib/time_to_collision
+[4.297s] 
+[4.298s] Installed /home/vekkaz/mobile_robotics_ws/build/time_to_collision
+[4.298s] running symlink_data
+[4.398s] Invoked command in '/home/vekkaz/mobile_robotics_ws/build/time_to_collision' returned '0': PYTHONPATH=/home/vekkaz/mobile_robotics_ws/build/time_to_collision/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vekkaz/mobile_robotics_ws/install/time_to_collision/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vekkaz/mobile_robotics_ws/build/time_to_collision/build --no-deps symlink_data

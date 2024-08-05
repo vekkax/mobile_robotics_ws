@@ -56,7 +56,7 @@ def generate_launch_description():
                     remappings=[('/cmd_vel_out','cmd_vel')]
     )
     
-    # path to rviz
+    """# path to rviz
     pkg_path = os.path.join(get_package_share_path(package_name))
     default_rviz_config_path = os.path.join(pkg_path + '/description/' + rviz_file)
     rviz_arg = DeclareLaunchArgument(name='rvizmodel', default_value=str(default_rviz_config_path), description='Absolute path to rviz model file')
@@ -67,7 +67,7 @@ def generate_launch_description():
         name='rviz2',
         output='screen',
         arguments=['-d', LaunchConfiguration('rvizmodel')],
-    )
+    )"""
 
     # Launch them all!
     return LaunchDescription([
@@ -76,6 +76,6 @@ def generate_launch_description():
         spawn_entity,
         joystick,
         twist_mux_node,
-        rviz_arg,
-        rviz_node,
+        ###rviz_arg,
+        ###rviz_node,
     ])

@@ -21,35 +21,44 @@ class DistFinder(Node):  # Redefine node class
         self.error_pub = self.create_publisher(Float32MultiArray, "/Error", 10)
         self.cmd_vel=self.create_publisher(Twist, "/cmd_vel_nav", 10)
 
-        self.Trajd = 1.0
+        self.Trajd = 2.0
         self.CD = float()
+        self.AB = float()
 
         self.vel=Twist()
-        self.vel.linear.x=0.3
+        self.vel.linear.x=1.0
+        self.dt= 0.0
+        self.prev_time= 0
 
     def scan_callback(self, data:LaserScan):
         self.get_range(data, 20)
         
-        error = [self.Trajd - self.CD, data.scan_time]
+        current_time = data.header.stamp.sec + data.header.stamp.nanosec * math.pow(10, -9)
+        self.dt=current_time - self.prev_time
+        error = [self.Trajd - self.CD, self.dt, self.alpha]
         
-        if sys.argv[1] == "y":
+        self.prev_time = current_time
+
+        if sys.argv and sys.argv[1] == "y":
 
             self.cmd_vel.publish(self.vel)
-        elif sys.argv[1]== "n":
+        else:
             pass
         
         self.error_pub.publish(Float32MultiArray(data=error))
 
+        
+
     def get_range(self, data, theta):
-        AC = 1.0
+        AC = self.dt*self.vel.linear.x
         a = data.ranges[89]
         b = data.ranges[89 + theta]
-        alpha = math.atan(
+        self.alpha = math.atan(
             (a * math.cos(math.radians(theta)) - b)
             / (a * math.sin(math.radians(theta)))
         )
-        AB = b * math.cos(alpha)
-        self.CD = AB + AC * math.sin(alpha)
+        self.AB = b * math.cos(self.alpha)
+        self.CD = self.AB + AC * math.sin(self.alpha)
 
 
 def main(args=None):

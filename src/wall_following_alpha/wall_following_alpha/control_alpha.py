@@ -19,24 +19,58 @@ class Control(Node):  # Redefine node class
         self.cmd_vel_pub = self.create_publisher(Twist, "/cmd_vel_nav",10)
 
         self.current_vel = Twist()
-        self.integral_error= 0.0
+        self.integral_error = 0.0
+        self.previous_error = 0.0
+        self.time = 0.0
+        self.iteration = 0
+        self.prev_vel = 0.0
 
     def vel_callback(self, data : Twist):
         self.current_vel = data
 
     def error_callback(self, data : Float32MultiArray):
-        self.error = data.data[0]
+        self.iteration += 1
+        self.current_error = data.data[0]
         self.dt = data.data[1]
+        self.alpha = data.data[2]
         new_vel = Twist()
         
-        self.integral_error += self.error * self.dt
+        self.derivative_error= (self.current_error - self.previous_error)/self.dt
+        self.previous_error=self.current_error
+        self.integral_error += self.current_error / self.dt
+        self.time += self.dt/100
 
-        ki = 0.1
- 
-        kp= 0.1
+        ki = 0.0001
+        kd = 0.50
+        kp= 0.45   
+        
+        if math.isnan(self.current_error) or math.isinf(self.current_error):
+                
+                new_vel.linear.x = 3.8
+                new_vel.angular.z = self.prev_vel
+        
+        else:
+        
+            if self.iteration >= 5:
+                new_vel.angular.z = self.current_error*kp + kd*self.derivative_error #+ self.integral_error*ki
+                if math.isinf(new_vel.angular.z) or math.isnan(new_vel.angular.z):
+                    new_vel.angular.z=self.prev_vel
+                self.prev_vel=-new_vel.angular.z
+                
 
-        new_vel.angular.z = self.current_vel.angular.z + self.error*kp  + self.integral_error*ki
-        new_vel.linear.x = self.current_vel.linear.x
+                if self.current_vel.linear.x < 3.8:                
+                    new_vel.linear.x = self.iteration*0.14
+                else:
+                    new_vel.linear.x = 3.8
+
+            else:
+                new_vel.angular.z = self.alpha*5.0
+                new_vel.linear.x = 0.7
+        
+        
+        
+        
+
         self.cmd_vel_pub.publish(new_vel)
   
 

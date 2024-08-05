@@ -1,6 +1,7 @@
 package.xml
 setup.cfg
 setup.py
+launch/wall_following.launch.py
 resource/wall_following_alpha
 wall_following_alpha/__init__.py
 wall_following_alpha/control_alpha.py

@@ -1,0 +1,17 @@
+[3.637s] Invoking command in '/home/vekkaz/mobile_robotics_ws/build/joy_tester': PYTHONPATH=/home/vekkaz/mobile_robotics_ws/build/joy_tester/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vekkaz/mobile_robotics_ws/install/joy_tester/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vekkaz/mobile_robotics_ws/build/joy_tester/build --no-deps symlink_data
+[4.022s] running develop
+[4.332s] running egg_info
+[4.332s] writing joy_tester.egg-info/PKG-INFO
+[4.332s] writing dependency_links to joy_tester.egg-info/dependency_links.txt
+[4.333s] writing entry points to joy_tester.egg-info/entry_points.txt
+[4.333s] writing requirements to joy_tester.egg-info/requires.txt
+[4.333s] writing top-level names to joy_tester.egg-info/top_level.txt
+[4.336s] reading manifest file 'joy_tester.egg-info/SOURCES.txt'
+[4.337s] writing manifest file 'joy_tester.egg-info/SOURCES.txt'
+[4.338s] running build_ext
+[4.339s] Creating /home/vekkaz/mobile_robotics_ws/install/joy_tester/lib/python3.10/site-packages/joy-tester.egg-link (link to .)
+[4.341s] Installing test_joy script to /home/vekkaz/mobile_robotics_ws/install/joy_tester/lib/joy_tester
+[4.341s] 
+[4.341s] Installed /home/vekkaz/mobile_robotics_ws/build/joy_tester
+[4.341s] running symlink_data
+[4.413s] Invoked command in '/home/vekkaz/mobile_robotics_ws/build/joy_tester' returned '0': PYTHONPATH=/home/vekkaz/mobile_robotics_ws/build/joy_tester/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vekkaz/mobile_robotics_ws/install/joy_tester/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/vekkaz/mobile_robotics_ws/build/joy_tester/build --no-deps symlink_data

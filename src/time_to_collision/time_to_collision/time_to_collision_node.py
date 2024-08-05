@@ -32,7 +32,7 @@ class TTC(Node):  # Redefine node class
         if self.vel > 0 and self.dist != 0:
             r_d = self.vel *math.cos(math.radians(1))
             ttc= self.dist/(-r_d)
-            if ttc >= -2:
+            if ttc >= -0.75:
                 self.aeb_pub.publish(self.cmd_break)
             else:
                 pass
