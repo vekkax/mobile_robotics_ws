@@ -21,7 +21,7 @@ class DistFinder(Node):  # Redefine node class
         self.error_pub = self.create_publisher(Float32MultiArray, "/Error", 10)
         self.cmd_vel=self.create_publisher(Twist, "/cmd_vel_nav", 10)
 
-        self.Trajd = 2.0
+        self.Trajd = 0.9
         self.CD = float()
         self.AB = float()
 
@@ -31,7 +31,7 @@ class DistFinder(Node):  # Redefine node class
         self.prev_time= 0
 
     def scan_callback(self, data:LaserScan):
-        self.get_range(data, 20)
+        self.get_range(data, 70)
         
         current_time = data.header.stamp.sec + data.header.stamp.nanosec * math.pow(10, -9)
         self.dt=current_time - self.prev_time

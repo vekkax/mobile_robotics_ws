@@ -47,32 +47,32 @@ class Control(Node):  # Redefine node class
         self.time += self.dt/100
 
         ki = 0.0001
-        kd = 0.50
-        kp= 0.45   
+        kd = 2.5
+        kp= 2.0   
         
         if not(self.aeb_data):
             if (math.isnan(self.current_error) or math.isinf(self.current_error))  :
                     
-                    new_vel.linear.x = 3.8
+                    new_vel.linear.x = 1.0
                     new_vel.angular.z = self.prev_vel
             
             else:
             
-                if self.iteration >= 5:
+                if self.iteration >= 2:
                     new_vel.angular.z = self.current_error*kp + kd*self.derivative_error #+ self.integral_error*ki
                     if math.isinf(new_vel.angular.z) or math.isnan(new_vel.angular.z):
                         new_vel.angular.z=self.prev_vel
                     self.prev_vel=-new_vel.angular.z
                     
 
-                    if self.current_vel.linear.x < 3.8:                
+                    if self.current_vel.linear.x < 1.0:                
                         new_vel.linear.x = self.iteration*0.14
                     else:
-                        new_vel.linear.x = 3.8
+                        new_vel.linear.x = 1.0
 
                 else:
-                    new_vel.angular.z = self.alpha*5.0
-                    new_vel.linear.x = 0.7
+                    new_vel.angular.z = self.alpha*0.50
+                    new_vel.linear.x = 0.3
             
             self.cmd_vel_pub.publish(new_vel)
         
