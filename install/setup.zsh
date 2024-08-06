@@ -9,7 +9,7 @@
 _colcon_prefix_chain_zsh_source_script() {
   if [ -f "$1" ]; then
     if [ -n "$COLCON_TRACE" ]; then
-      echo "# . \"$1\""
+      echo ". \"$1\""
     fi
     . "$1"
   else
@@ -22,10 +22,10 @@ _colcon_prefix_chain_zsh_source_script() {
 COLCON_CURRENT_PREFIX="/opt/ros/humble"
 _colcon_prefix_chain_zsh_source_script "$COLCON_CURRENT_PREFIX/local_setup.zsh"
 # setting COLCON_CURRENT_PREFIX avoids determining the prefix in the sourced script
-COLCON_CURRENT_PREFIX="/home/vekkaz/ros2_ws_2401/install"
+COLCON_CURRENT_PREFIX="/home/perrone/ros2_ws_2302/install"
 _colcon_prefix_chain_zsh_source_script "$COLCON_CURRENT_PREFIX/local_setup.zsh"
 # setting COLCON_CURRENT_PREFIX avoids determining the prefix in the sourced script
-COLCON_CURRENT_PREFIX="/home/vekkaz/ros2_ws_tutorial/install"
+COLCON_CURRENT_PREFIX="/home/perrone/ros2_ws_2402/install"
 _colcon_prefix_chain_zsh_source_script "$COLCON_CURRENT_PREFIX/local_setup.zsh"
 
 # source this prefix
