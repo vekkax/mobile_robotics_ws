@@ -4,9 +4,8 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
-from geometry_msgs.msg import Point
 from geometry_msgs.msg import Twist
-from std_msgs.msg import Float32
+from std_msgs.msg import Bool
 
 import math
 import sys
@@ -20,11 +19,15 @@ class TTC(Node):  # Redefine node class
         self.pose_subs = self.create_subscription(LaserScan, "/scan", self.scan_callback, 10)
 
         self.aeb_pub = self.create_publisher(Twist, "/cmd_vel_aeb", 10)
+        self.aeb_act = self.create_publisher(Bool, "/AEB", 10)
 
+        
         self.timer = self.create_timer(0.05, self.timer_callback)
 
         self.cmd_break= Twist()
         self.cmd_break.linear.x=0.0
+
+        self.aeb_data=Bool()
 
         self.vel = float()
         
@@ -34,8 +37,13 @@ class TTC(Node):  # Redefine node class
             ttc= self.dist/(-r_d)
             if ttc >= -0.75:
                 self.aeb_pub.publish(self.cmd_break)
+                self.aeb_data.data=True
+                self.aeb_act.publish(self.aeb_data)
             else:
+                self.aeb_data.data=False
+                self.aeb_act.publish(self.aeb_data)
                 pass
+        
         
     def cmd_vel_callback(self, data: Twist):
         self.vel=data.linear.x
