@@ -15,9 +15,7 @@ class DistFinder(Node):  # Redefine node class
     def __init__(self):
         super().__init__("dist_finder_alpha")  # Redefine node name
 
-        self.pose_subs = self.create_subscription(
-            LaserScan, "/scan", self.scan_callback, 10
-        )
+        self.pose_subs = self.create_subscription(LaserScan, "/scan", self.scan_callback, 10)
         self.error_pub = self.create_publisher(Float32MultiArray, "/Error", 10)
         self.cmd_vel=self.create_publisher(Twist, "/cmd_vel_nav", 10)
 

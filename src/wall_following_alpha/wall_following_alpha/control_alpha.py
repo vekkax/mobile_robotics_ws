@@ -7,6 +7,7 @@ from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Float32MultiArray
 from std_msgs.msg import Bool
+from sensor_msgs.msg import LaserScan
 
 import math
 
@@ -19,6 +20,7 @@ class Control(Node):  # Redefine node class
         self.cmd_vel_sub = self.create_subscription(Twist, "/cmd_vel",self.vel_callback, 10)
         self.cmd_vel_pub = self.create_publisher(Twist, "/cmd_vel_nav",10)
         self.AEB_sub= self.create_subscription(Bool, "/AEB", self.aeb_callback,10)
+        self.pose_subs = self.create_subscription(LaserScan, "/scan", self.scan_callback, 10)
 
         self.current_vel = Twist()
         self.integral_error = 0.0
@@ -27,6 +29,10 @@ class Control(Node):  # Redefine node class
         self.iteration = 0
         self.prev_vel = 0.0
         self.aeb_data = False
+    
+    def scan_callback(self, data : LaserScan):
+        self.right_ray = data.ranges[119]
+        self.left_ray = data.ranges[239]
 
     def vel_callback(self, data : Twist):
         self.current_vel = data
