@@ -30,7 +30,7 @@ class TTC(Node):  # Redefine node class
         self.aeb_data=Bool()
 
         self.vel = float()
-        self.dist =1.0
+        self.dist = float()
         
     def timer_callback(self):
         if self.vel > 0 and self.dist != 0:
