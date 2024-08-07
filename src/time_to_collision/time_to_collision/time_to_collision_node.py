@@ -27,24 +27,23 @@ class TTC(Node):  # Redefine node class
         self.cmd_break= Twist()
         self.cmd_break.linear.x=0.0
 
-        self.aeb_data=Bool()
+        self.aeb_data = Bool()
+        self.aeb_data.data = False 
 
         self.vel = float()
         self.dist = float()
         
     def timer_callback(self):
-        if self.vel > 0 and self.dist != 0:
+        if self.vel > 0.0 and self.dist != 0.0 and not(self.aeb_data.data):
             r_d = self.vel *math.cos(math.radians(1))
-            ttc= self.dist/(-r_d)
-            if ttc >= -0.5:
+            ttc= self.dist/r_d
+            if ttc <= 0.8:
                 self.aeb_pub.publish(self.cmd_break)
                 self.aeb_data.data=True
                 self.aeb_act.publish(self.aeb_data)
             else:
                 self.aeb_data.data=False
-                self.aeb_act.publish(self.aeb_data)
-                pass
-        
+                self.aeb_act.publish(self.aeb_data)        
         
     def cmd_vel_callback(self, data: Twist):
         self.vel=data.linear.x

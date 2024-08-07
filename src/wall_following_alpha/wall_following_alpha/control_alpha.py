@@ -72,21 +72,20 @@ class Control(Node):  # Redefine node class
                     new_vel.angular.z = self.prev_vel            
             else:
                 if (self.right_ray >= self.desire_dist*1.5 and self.left_ray >= self.desire_dist*1.5):
-                    new_vel.linear.x = self.current_vel.linear.x*0.7 
+                    new_vel.linear.x = self.current_vel.linear.x 
                     new_vel.angular.z = 2.0
                 else:            
                     if self.iteration >= 2:
                         new_vel.angular.z = self.current_error*kp + kd*self.derivative_error #+ self.integral_error*ki
                         if math.isinf(new_vel.angular.z) or math.isnan(new_vel.angular.z):
                             new_vel.angular.z=self.prev_vel
-                        self.prev_vel=-new_vel.angular.z
-                        
+                        self.prev_vel=-new_vel.angular.z                        
 
                         if self.current_vel.linear.x < 1.0:                
                             new_vel.linear.x = self.iteration*0.14
                         else:
                             new_vel.linear.x = 1.0
-
+                            
                     else:
                         new_vel.angular.z = self.alpha*0.50
                         new_vel.linear.x = 0.3
