@@ -1,4 +1,0 @@
-[0mCMake Error: The current CMakeCache.txt directory /home/perrone/mobile_robotics_ws/build/f112th_sim_2024_alpha/CMakeCache.txt is different than the directory /home/vekkaz/mobile_robotics_ws/build/f112th_sim_2024_alpha where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
-[0mCMake Error: The source directory "/home/vekkaz/mobile_robotics_ws/src/f112th_sim_2024_alpha" does not exist.
-Specify --help for usage, or press the help button on the CMake GUI.[0m
-gmake: *** [Makefile:226: cmake_check_build_system] Error 1
