@@ -5,7 +5,7 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-from std_msgs.msg import Float32MultiArray
+from std_msgs.msg import Float32MultiArray, Float32
 from std_msgs.msg import Bool
 from sensor_msgs.msg import LaserScan
 
@@ -21,6 +21,8 @@ class Control(Node):  # Redefine node class
         self.cmd_vel_pub = self.create_publisher(Twist, "/cmd_vel_nav",10)
         self.AEB_sub= self.create_subscription(Bool, "/AEB", self.aeb_callback,10)
         self.pose_subs = self.create_subscription(LaserScan, "/scan", self.scan_callback, 10)
+        self.desire_dist_sub = self.create_subscription(Float32, "/Desire_dist", self.desire_dist_callback, 10)
+
 
         self.current_vel = Twist()
         self.integral_error = 0.0
@@ -29,10 +31,13 @@ class Control(Node):  # Redefine node class
         self.iteration = 0
         self.prev_vel = 0.0
         self.aeb_data = False
+
+    def desire_dist_callback(self, data : Float32):
+        self.desire_dist = data
     
     def scan_callback(self, data : LaserScan):
-        self.right_ray = data.ranges[119]
-        self.left_ray = data.ranges[239]
+        self.right_ray = data.ranges[99]
+        self.left_ray = data.ranges[259]
 
     def vel_callback(self, data : Twist):
         self.current_vel = data
@@ -57,28 +62,29 @@ class Control(Node):  # Redefine node class
         kp= 2.0   
         
         if not(self.aeb_data):
-            if (math.isnan(self.current_error) or math.isinf(self.current_error))  :
-                    
+            if (math.isnan(self.current_error) or math.isinf(self.current_error)):                    
                     new_vel.linear.x = 1.0
-                    new_vel.angular.z = self.prev_vel
-            
+                    new_vel.angular.z = self.prev_vel            
             else:
-            
-                if self.iteration >= 2:
-                    new_vel.angular.z = self.current_error*kp + kd*self.derivative_error #+ self.integral_error*ki
-                    if math.isinf(new_vel.angular.z) or math.isnan(new_vel.angular.z):
-                        new_vel.angular.z=self.prev_vel
-                    self.prev_vel=-new_vel.angular.z
-                    
+                if (self.right_ray >= self.desire_dist and self.left_ray >= self.desire_dist):
+                    new_vel.linear.x = self.current_vel.linear.x/1.5 
+                    new_vel.angular.z = 1.0
+                else:            
+                    if self.iteration >= 2:
+                        new_vel.angular.z = self.current_error*kp + kd*self.derivative_error #+ self.integral_error*ki
+                        if math.isinf(new_vel.angular.z) or math.isnan(new_vel.angular.z):
+                            new_vel.angular.z=self.prev_vel
+                        self.prev_vel=-new_vel.angular.z
+                        
 
-                    if self.current_vel.linear.x < 1.0:                
-                        new_vel.linear.x = self.iteration*0.14
+                        if self.current_vel.linear.x < 1.0:                
+                            new_vel.linear.x = self.iteration*0.14
+                        else:
+                            new_vel.linear.x = 1.0
+
                     else:
-                        new_vel.linear.x = 1.0
-
-                else:
-                    new_vel.angular.z = self.alpha*0.50
-                    new_vel.linear.x = 0.3
+                        new_vel.angular.z = self.alpha*0.50
+                        new_vel.linear.x = 0.3
             
             self.cmd_vel_pub.publish(new_vel)
         
