@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'follow_the_gap_node = follow_the_gap.follow_the_gap_node:main',
         ],
     },
 )
