@@ -31,9 +31,13 @@ class Control(Node):  # Redefine node class
         self.iteration = 0
         self.prev_vel = 0.0
         self.aeb_data = False
+        self.desire_dist = float()
+        self.right_ray = float()
+        self.left_ray = float()
+
 
     def desire_dist_callback(self, data : Float32):
-        self.desire_dist = data
+        self.desire_dist = data.data
     
     def scan_callback(self, data : LaserScan):
         self.right_ray = data.ranges[99]
@@ -66,7 +70,7 @@ class Control(Node):  # Redefine node class
                     new_vel.linear.x = 1.0
                     new_vel.angular.z = self.prev_vel            
             else:
-                if (self.right_ray >= self.desire_dist and self.left_ray >= self.desire_dist):
+                if (self.right_ray >= self.desire_dist*1.5 and self.left_ray >= self.desire_dist*1.5):
                     new_vel.linear.x = self.current_vel.linear.x/1.5 
                     new_vel.angular.z = 1.0
                 else:            

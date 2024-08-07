@@ -18,7 +18,7 @@ class DistFinder(Node):  # Redefine node class
         self.pose_subs = self.create_subscription(LaserScan, "/scan", self.scan_callback, 10)
         self.error_pub = self.create_publisher(Float32MultiArray, "/Error", 10)
         self.cmd_vel = self.create_publisher(Twist, "/cmd_vel_nav", 10)
-        self.distance = self.create_publisher(Float32, "/Desire_dist", 10)
+        self.distance_pub = self.create_publisher(Float32, "/Desire_dist", 10)
 
         self.Trajd = 0.9
         self.CD = float()
@@ -45,7 +45,7 @@ class DistFinder(Node):  # Redefine node class
             pass
         
         self.error_pub.publish(Float32MultiArray(data=error))
-        self.error_pub.publish(Float32(data=self.Trajd))
+        self.distance_pub.publish(Float32(data=self.Trajd))
 
         
 
