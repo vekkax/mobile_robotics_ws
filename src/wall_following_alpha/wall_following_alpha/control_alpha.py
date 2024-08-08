@@ -64,7 +64,7 @@ class Control(Node):  # Redefine node class
 
         ki = 0.0001
         kd = 2.5
-        kp= 2.0   
+        kp= 2.5   
         
         if not(self.aeb_data):
             if (math.isnan(self.current_error) or math.isinf(self.current_error)):                    
@@ -85,7 +85,7 @@ class Control(Node):  # Redefine node class
                             new_vel.linear.x = self.iteration*0.14
                         else:
                             new_vel.linear.x = 1.0
-                            
+
                     else:
                         new_vel.angular.z = self.alpha*0.50
                         new_vel.linear.x = 0.3

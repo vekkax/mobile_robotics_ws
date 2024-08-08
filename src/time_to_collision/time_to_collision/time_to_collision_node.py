@@ -37,7 +37,7 @@ class TTC(Node):  # Redefine node class
         if self.vel > 0.0 and self.dist != 0.0 and not(self.aeb_data.data):
             r_d = self.vel *math.cos(math.radians(1))
             ttc= self.dist/r_d
-            if ttc <= 0.8:
+            if ttc <= 0.5:
                 self.aeb_pub.publish(self.cmd_break)
                 self.aeb_data.data=True
                 self.aeb_act.publish(self.aeb_data)
