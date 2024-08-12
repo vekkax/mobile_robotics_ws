@@ -13,6 +13,7 @@ class FTG(Node):  # Redefine node class
         super().__init__("follow_the_gap_node")  # Redefine node name
         
         self.pose_subs = self.create_subscription(LaserScan, "/scan", self.scan_callback, 10)
+        self.vel_subs = self.create_subscription(Twist, "/cmd_vel", self.vel_callback, 10)
         self.cmd_pub = self.create_publisher(Twist, "/cmd_vel_nav",10)
         
         self.iteration = 0
@@ -20,7 +21,9 @@ class FTG(Node):  # Redefine node class
         self.min_index = 0
         self.radius = 0.25
         self.threshold = 2.7
-        self.dist = 0.0   
+        self.colission_threshold = 0.5
+        self.dist = 0.0 
+        self.data = []  
 
         self.max_gap_end_index= 0
         self.max_gap = 0     
@@ -31,9 +34,14 @@ class FTG(Node):  # Redefine node class
         self.previous_error = 0.0
         self.dt= 0.5
 
+        self.velocity = Twist()
 
+
+    def vel_callback(self, data : Twist):
+        self.velocity = data
 
     def scan_callback(self, data : LaserScan):
+        self.data = data.ranges
         self.iteration += 1
         min_range= 95 - 1
         max_range= 360 - 1 - min_range
@@ -50,7 +58,7 @@ class FTG(Node):  # Redefine node class
                 if self.isInside(self.x[self.min_index],self.y[self.min_index],self.radius,self.x[i],self.y[i]) or self.ranges[i] < self.threshold:
                     self.ranges[i] = 0.0
 
-            print(self.ranges)
+            #input(self.ranges)
             self.max_gap, self.max_gap_end_index = self.find_best_subsection(self.ranges)
             self.error = self.max_gap_end_index + min_range - 180
             #print(error)
@@ -86,13 +94,26 @@ class FTG(Node):  # Redefine node class
         
 
     def control(self, error): 
-            error_d = (self.error - self.previous_error)/self.dt
-            self.previous_error=self.error
+            
             kp=0.02
             kd = 0.003
+            
+            error_d = (self.error - self.previous_error)/self.dt
+            self.previous_error=self.error
+            
             new_vel=Twist()
-            new_vel.linear.x = 0.8
-            new_vel.angular.z = kp*error + kd*error_d
+
+            if self.data[135] < self.colission_threshold:
+                new_vel.linear.x = self.velocity.linear.x*0.75
+                new_vel.angular.z = 2.0
+            elif self.data[225] < self.colission_threshold:
+                new_vel.linear.x = self.velocity.linear.x*0.75
+                new_vel.angular.z = -2.0
+            else:
+                new_vel.linear.x = 0.8
+                new_vel.angular.z = kp*error + kd*error_d
+
+
             self.cmd_pub.publish(new_vel)
 
         
