@@ -112,10 +112,10 @@ class FTG(Node):  # Redefine node class
 
             if self.data[135] < self.colission_threshold:
                 new_vel.linear.x = self.velocity.linear.x*0.75
-                new_vel.angular.z = 2.0
+                new_vel.angular.z = 1.8
             elif self.data[225] < self.colission_threshold:
                 new_vel.linear.x = self.velocity.linear.x*0.75
-                new_vel.angular.z = -2.0
+                new_vel.angular.z = -1.8
             else:
                 new_vel.linear.x = 0.8
                 new_vel.angular.z = kp*error + kd*error_d
