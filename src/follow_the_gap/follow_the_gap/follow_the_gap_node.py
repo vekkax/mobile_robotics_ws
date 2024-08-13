@@ -45,23 +45,30 @@ class FTG(Node):  # Redefine node class
         self.iteration += 1
         min_range= 95 - 1
         max_range= 360 - 1 - min_range
+
         if not(self.iteration % 5):
             self.iteration = 0
             self.ranges = [x - self.radius for x in data.ranges[min_range:max_range]]
             self.min_index = self.ranges.index(min(self.ranges))
 
-            for i in range(len(self.ranges)):
+            for i in range(len(self.ranges)):  
+                if math.isinf(self.ranges[i]):
+                        self.ranges[i] = 12.0              
                 self.x.append(self.ranges[i]*math.cos(math.radians(min_range + 1 + i)))
                 self.y.append(self.ranges[i]*math.sin(math.radians(min_range + 1 + i)))
 
             for i in range(len(self.ranges)):
                 if self.isInside(self.x[self.min_index],self.y[self.min_index],self.radius,self.x[i],self.y[i]) or self.ranges[i] < self.threshold:
                     self.ranges[i] = 0.0
-
-            #input(self.ranges)
+            
             self.max_gap, self.max_gap_end_index = self.find_best_subsection(self.ranges)
-            self.error = self.max_gap_end_index + min_range - 180
-            #print(error)
+            #print(self.ranges)
+            #print("------------------------------------------------------")
+            #print(data.ranges)
+            #print("------------------------------------------------------")            
+            self.error = (self.max_gap_end_index-self.max_gap/2) + min_range - 180
+            #print(self.error)
+            #input(self.max_gap_end_index)
             self.control(self.error)
 
 
