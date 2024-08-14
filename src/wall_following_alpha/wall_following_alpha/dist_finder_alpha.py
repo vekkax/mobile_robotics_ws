@@ -20,7 +20,7 @@ class DistFinder(Node):  # Redefine node class
         self.cmd_vel = self.create_publisher(Twist, "/cmd_vel_nav", 10)
         self.distance_pub = self.create_publisher(Float32, "/Desire_dist", 10)
 
-        self.Trajd = 0.9
+        self.Trajd = 0.65
         self.CD = float()
         self.AB = float()
 
@@ -30,7 +30,7 @@ class DistFinder(Node):  # Redefine node class
         self.prev_time= 0
 
     def scan_callback(self, data:LaserScan):
-        self.get_range(data, 70)
+        self.get_range(data, 80)
         
         current_time = data.header.stamp.sec + data.header.stamp.nanosec * math.pow(10, -9)
         self.dt=current_time - self.prev_time

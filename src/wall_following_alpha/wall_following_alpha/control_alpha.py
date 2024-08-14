@@ -34,7 +34,9 @@ class Control(Node):  # Redefine node class
         self.desire_dist = float()
         self.right_ray = float()
         self.left_ray = float()
+        self.front_ray = float() 
         self.nw_it = 0
+        self.speed = 1.7
 
 
     def desire_dist_callback(self, data : Float32):
@@ -43,6 +45,7 @@ class Control(Node):  # Redefine node class
     def scan_callback(self, data : LaserScan):
         self.right_ray = data.ranges[84]
         self.left_ray = data.ranges[274]
+        self.front_ray = data.ranges[180]
 
     def vel_callback(self, data : Twist):
         self.current_vel = data
@@ -68,12 +71,15 @@ class Control(Node):  # Redefine node class
         
         if not(self.aeb_data):
             if (math.isnan(self.current_error) or math.isinf(self.current_error)):                    
-                    new_vel.linear.x = 1.0
+                    new_vel.linear.x = self.speed
                     new_vel.angular.z = self.prev_vel            
             else:
-                if (self.right_ray >= self.desire_dist*1.5 and self.left_ray >= self.desire_dist*1.5):
-                    new_vel.linear.x = self.current_vel.linear.x 
-                    new_vel.angular.z = 2.0
+                if self.front_ray <= self.desire_dist*2.0:
+                    new_vel.linear.x = self.current_vel.linear.x - self.current_vel.linear.x/3
+                    new_vel.angular.z = 3.0
+                elif (self.right_ray >= self.desire_dist*1.5 and self.left_ray >= self.desire_dist*1.5):
+                    new_vel.linear.x = self.current_vel.linear.x
+                    new_vel.angular.z = -1.5
                 else:            
                     if self.iteration >= 2:
                         new_vel.angular.z = self.current_error*kp + kd*self.derivative_error #+ self.integral_error*ki
@@ -81,10 +87,10 @@ class Control(Node):  # Redefine node class
                             new_vel.angular.z=self.prev_vel
                         self.prev_vel=-new_vel.angular.z                        
 
-                        if self.current_vel.linear.x < 1.0:                
+                        if self.current_vel.linear.x < self.speed:                
                             new_vel.linear.x = self.iteration*0.14
                         else:
-                            new_vel.linear.x = 1.0
+                            new_vel.linear.x = self.speed
 
                     else:
                         new_vel.angular.z = self.alpha*0.50

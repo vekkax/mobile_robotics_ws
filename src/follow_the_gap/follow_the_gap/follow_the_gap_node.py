@@ -25,6 +25,9 @@ class FTG(Node):  # Redefine node class
         self.dist = 0.0 
         self.data = []  
 
+        self.linear_speed = 2.0
+        self.angular_speed = 1.0
+
         self.max_gap_end_index= 0
         self.max_gap = 0     
 
@@ -43,7 +46,11 @@ class FTG(Node):  # Redefine node class
     def scan_callback(self, data : LaserScan):
         self.data = data.ranges
         self.iteration += 1
-        min_range= 95 - 1
+        if self.iteration <= 5:
+            val = 135
+        else:
+            val = 30
+        min_range= val - 1
         max_range= 360 - 1 - min_range
         if not(self.iteration % 5):
             self.iteration = 0
@@ -51,6 +58,8 @@ class FTG(Node):  # Redefine node class
             self.min_index = self.ranges.index(min(self.ranges))
 
             for i in range(len(self.ranges)):
+                if math.isinf(self.ranges[i]):
+                    self.ranges[i] = 12.0
                 self.x.append(self.ranges[i]*math.cos(math.radians(min_range + 1 + i)))
                 self.y.append(self.ranges[i]*math.sin(math.radians(min_range + 1 + i)))
 
@@ -60,7 +69,7 @@ class FTG(Node):  # Redefine node class
 
             #input(self.ranges)
             self.max_gap, self.max_gap_end_index = self.find_best_subsection(self.ranges)
-            self.error = self.max_gap_end_index + min_range - 180
+            self.error = (self.max_gap_end_index-self.max_gap/2) + min_range - 180
             #print(error)
             self.control(self.error)
 
@@ -95,7 +104,7 @@ class FTG(Node):  # Redefine node class
 
     def control(self, error): 
             
-            kp=0.02
+            kp=0.03
             kd = 0.003
             
             error_d = (self.error - self.previous_error)/self.dt
@@ -103,14 +112,20 @@ class FTG(Node):  # Redefine node class
             
             new_vel=Twist()
 
-            if self.data[135] < self.colission_threshold:
-                new_vel.linear.x = self.velocity.linear.x*0.75
-                new_vel.angular.z = 2.0
+            threshold = 2.0
+
+            if all(value < threshold for value in self.data[160:200]):
+                if self.data[180] < threshold*2:
+                    new_vel.linear.x = self.velocity.linear.x*0.3
+                    new_vel.angular.z = -1.0                    
+            elif self.data[135] < self.colission_threshold:
+                new_vel.linear.x = self.linear_speed*0.75
+                new_vel.angular.z = self.angular_speed
             elif self.data[225] < self.colission_threshold:
-                new_vel.linear.x = self.velocity.linear.x*0.75
-                new_vel.angular.z = -2.0
+                new_vel.linear.x = self.linear_speed*0.75
+                new_vel.angular.z = -self.angular_speed
             else:
-                new_vel.linear.x = 0.8
+                new_vel.linear.x = self.linear_speed
                 new_vel.angular.z = kp*error + kd*error_d
 
 
