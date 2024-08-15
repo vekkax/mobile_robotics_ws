@@ -35,7 +35,7 @@ class FTG(Node):  # Redefine node class
         self.y = []    
 
         self.previous_error = 0.0
-        self.dt= 0.5
+        self.dt= 0.1
 
         self.angular_emergency_velocity = 1.8
         self.x_velocity = 1.0
@@ -55,7 +55,7 @@ class FTG(Node):  # Redefine node class
         min_range= val - 1
         max_range= 360 - 1 - min_range
 
-        if not(self.iteration % 5):
+        if not(self.iteration % 1):
             self.iteration = 0
             self.ranges = [x - self.radius for x in data.ranges[min_range:max_range]]
             self.min_index = self.ranges.index(min(self.ranges))
@@ -114,12 +114,17 @@ class FTG(Node):  # Redefine node class
             
             new_vel=Twist()
 
-            threshold = 2.0
+            threshold = 2.3
 
             if all(value < threshold for value in self.data[160:200]):
-                if self.data[180] < threshold*2:
+                if all(value < threshold*(1/3) for value in self.data[160:200]):             
                     new_vel.linear.x = self.velocity.linear.x*0.3
-                    new_vel.angular.z = -1.0                    
+                else:
+                    new_vel.linear.x = self.velocity.linear.x*0.7                
+                if self.data[135] > self.data[225]:
+                    new_vel.angular.z = -1.0      
+                else:
+                    new_vel.angular.z = 1.0
             elif self.data[135] < self.colission_threshold:
                 new_vel.linear.x = self.linear_speed*0.75
                 new_vel.angular.z = self.angular_speed
@@ -127,7 +132,10 @@ class FTG(Node):  # Redefine node class
                 new_vel.linear.x = self.linear_speed*0.75
                 new_vel.angular.z = -self.angular_speed
             else:
-                new_vel.linear.x = self.linear_speed
+                if self.velocity.linear.x < self.linear_speed:
+                    new_vel.linear.x = self.velocity.linear.x + 0.4
+                else:
+                    new_vel.linear.x = self.linear_speed
                 new_vel.angular.z = kp*error + kd*error_d
 
 

@@ -36,7 +36,7 @@ class Control(Node):  # Redefine node class
         self.left_ray = float()
         self.front_ray = float() 
         self.nw_it = 0
-        self.speed = 1.7
+        self.speed = 1.9
 
 
     def desire_dist_callback(self, data : Float32):
@@ -74,12 +74,12 @@ class Control(Node):  # Redefine node class
                     new_vel.linear.x = self.speed
                     new_vel.angular.z = self.prev_vel            
             else:
-                if self.front_ray <= self.desire_dist*2.0:
-                    new_vel.linear.x = self.current_vel.linear.x - self.current_vel.linear.x/3
+                if self.front_ray <= self.desire_dist*2.3:
+                    new_vel.linear.x = self.current_vel.linear.x - self.current_vel.linear.x/6
                     new_vel.angular.z = 3.0
                 elif (self.right_ray >= self.desire_dist*1.5 and self.left_ray >= self.desire_dist*1.5):
                     new_vel.linear.x = self.current_vel.linear.x
-                    new_vel.angular.z = -1.5
+                    new_vel.angular.z = -1.7
                 else:            
                     if self.iteration >= 2:
                         new_vel.angular.z = self.current_error*kp + kd*self.derivative_error #+ self.integral_error*ki
@@ -87,8 +87,11 @@ class Control(Node):  # Redefine node class
                             new_vel.angular.z=self.prev_vel
                         self.prev_vel=-new_vel.angular.z                        
 
-                        if self.current_vel.linear.x < self.speed:                
-                            new_vel.linear.x = self.iteration*0.14
+                        if self.current_vel.linear.x < self.speed:
+                            if self.iteration <= 10:
+                                new_vel.linear.x = self.speed*0.75
+                            else:
+                                new_vel.linear.x = self.current_vel.linear.x + self.current_vel.linear.x/8
                         else:
                             new_vel.linear.x = self.speed
 
