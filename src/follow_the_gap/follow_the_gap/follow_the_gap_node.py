@@ -37,8 +37,6 @@ class FTG(Node):  # Redefine node class
         self.previous_error = 0.0
         self.dt= 0.1
 
-        self.angular_emergency_velocity = 1.8
-        self.x_velocity = 1.0
         self.velocity = Twist()
 
 
@@ -121,7 +119,7 @@ class FTG(Node):  # Redefine node class
                     new_vel.linear.x = self.velocity.linear.x*0.3
                 else:
                     new_vel.linear.x = self.velocity.linear.x*0.7                
-                if self.data[135] > self.data[225]:
+                if max(self.data[44:89]) > max(self.data[269:314]):
                     new_vel.angular.z = -1.0      
                 else:
                     new_vel.angular.z = 1.0
