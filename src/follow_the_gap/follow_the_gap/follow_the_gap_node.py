@@ -120,9 +120,9 @@ class FTG(Node):  # Redefine node class
                 else:
                     new_vel.linear.x = self.velocity.linear.x*0.7                
                 if max(self.data[44:89]) > max(self.data[269:314]):
-                    new_vel.angular.z = -1.0      
+                    new_vel.angular.z = -3.0      
                 else:
-                    new_vel.angular.z = 1.0
+                    new_vel.angular.z = 3.0
             elif self.data[135] < self.colission_threshold:
                 new_vel.linear.x = self.linear_speed*0.75
                 new_vel.angular.z = self.angular_speed

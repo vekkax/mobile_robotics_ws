@@ -25,7 +25,8 @@ class TTC(Node):  # Redefine node class
         self.timer = self.create_timer(0.05, self.timer_callback)
 
         self.cmd_break= Twist()
-        self.cmd_break.linear.x=0.0
+        self.cmd_break.linear.x = 0.0
+        self.cmd_break.angular.z = 0.0
 
         self.aeb_data = Bool()
         self.aeb_data.data = False 
@@ -37,7 +38,8 @@ class TTC(Node):  # Redefine node class
         if self.vel > 0.0 and self.dist != 0.0 and not(self.aeb_data.data):
             r_d = self.vel *math.cos(math.radians(1))
             ttc= self.dist/r_d
-            if ttc <= 0.5:
+            print(ttc)
+            if ttc <= 0.7:
                 self.aeb_pub.publish(self.cmd_break)
                 self.aeb_data.data=True
                 self.aeb_act.publish(self.aeb_data)
