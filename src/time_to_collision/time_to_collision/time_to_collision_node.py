@@ -6,6 +6,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Bool
+from std_msgs.msg import Float32
 
 import math
 import sys
@@ -20,12 +21,13 @@ class TTC(Node):  # Redefine node class
 
         self.aeb_pub = self.create_publisher(Twist, "/cmd_vel_aeb", 10)
         self.aeb_act = self.create_publisher(Bool, "/AEB", 10)
+        self.TTC = self.create_publisher(Float32, "/TTC", 10)
 
         
         self.timer = self.create_timer(0.05, self.timer_callback)
 
         self.cmd_break= Twist()
-        self.cmd_break.linear.x = 0.0
+        self.cmd_break.linear.x = -1.0
         self.cmd_break.angular.z = 0.0
 
         self.aeb_data = Bool()
@@ -34,24 +36,27 @@ class TTC(Node):  # Redefine node class
         self.vel = float()
         self.dist = float()
         
-    def timer_callback(self):
-        if self.vel > 0.0 and self.dist != 0.0 and not(self.aeb_data.data):
+    def timer_callback(self):        
+        if self.vel > 0.0 and self.dist != 0.0 and not(self.aeb_data.data):            
             r_d = self.vel *math.cos(math.radians(1))
             ttc= self.dist/r_d
-            print(ttc)
-            if ttc <= 0.7:
+            self.TTC.publish(Float32(data=ttc))
+            if ttc <= 1.0:
                 self.aeb_pub.publish(self.cmd_break)
                 self.aeb_data.data=True
                 self.aeb_act.publish(self.aeb_data)
             else:
                 self.aeb_data.data=False
-                self.aeb_act.publish(self.aeb_data)        
-        
+                self.aeb_act.publish(self.aeb_data)   
+        elif self.aeb_data.data:
+            self.aeb_data.data=False
+            self.aeb_act.publish(self.aeb_data) 
+
     def cmd_vel_callback(self, data: Twist):
         self.vel=data.linear.x
 
     def scan_callback(self, data: LaserScan):
-        self.dist = data.ranges[179]
+        self.dist = data.ranges[0]
     
     
 
