@@ -19,11 +19,11 @@ def generate_launch_description():
     control = Node(
                     package=package_name, 
                     executable='control_alpha',
-    )
+    )  
 
 
     # Launch them all!
     return LaunchDescription([
         dist_finder,
-        control
+        control,
     ])

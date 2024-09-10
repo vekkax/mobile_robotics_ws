@@ -25,6 +25,7 @@ setup(
         'console_scripts': [
              'dist_finder_alpha = wall_following_alpha.dist_finder_alpha:main',
              'control_alpha = wall_following_alpha.control_alpha:main',
+             'lidar_plot = wall_following_alpha.lidar_plot:main',
         ],
     },
 )

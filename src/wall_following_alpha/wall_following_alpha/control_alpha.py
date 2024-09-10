@@ -8,6 +8,7 @@ from geometry_msgs.msg import Twist
 from std_msgs.msg import Float32MultiArray, Float32
 from std_msgs.msg import Bool
 from sensor_msgs.msg import LaserScan
+import statistics as sts
 
 import math
 
@@ -20,7 +21,7 @@ class Control(Node):  # Redefine node class
         self.cmd_vel_sub = self.create_subscription(Twist, "/cmd_vel",self.vel_callback, 10)
         self.cmd_vel_pub = self.create_publisher(Twist, "/cmd_vel_nav",10)
         self.AEB_sub= self.create_subscription(Bool, "/AEB", self.aeb_callback,10)
-        self.pose_subs = self.create_subscription(LaserScan, "/scan", self.scan_callback, 10)
+        self.pose_subs = self.create_subscription(LaserScan, "/Fscan", self.scan_callback, 10)
         self.desire_dist_sub = self.create_subscription(Float32, "/Desire_dist", self.desire_dist_callback, 10)
 
 
@@ -36,16 +37,31 @@ class Control(Node):  # Redefine node class
         self.left_ray = float()
         self.front_ray = float() 
         self.nw_it = 0
-        self.speed = 1.9
+        self.speed = 1.0
 
 
     def desire_dist_callback(self, data : Float32):
         self.desire_dist = data.data
     
     def scan_callback(self, data : LaserScan):
-        self.right_ray = data.ranges[84]
-        self.left_ray = data.ranges[274]
-        self.front_ray = data.ranges[180]
+        self.right_ray = self.measurment(data,-46)
+        self.left_ray = self.measurment(data,44)
+        self.front_ray = self.measurment(data,0)
+
+    def measurment(self, data, mid):
+        rays = data.ranges[mid-5:mid+5]
+        
+        if all(ray==15.0 for ray in rays):  
+            return 15.0
+        else:  
+            delete = []
+            for i in range(len(rays)):
+                if rays[i] == 15.0:
+                    delete.append(i)
+            for ele in sorted(delete, reverse = True): 
+                del rays[ele]
+
+            return sts.mean(rays)
 
     def vel_callback(self, data : Twist):
         self.current_vel = data
@@ -55,7 +71,7 @@ class Control(Node):  # Redefine node class
 
     def error_callback(self, data : Float32MultiArray):
         self.iteration += 1
-        self.current_error = data.data[0]
+        self.current_error = -data.data[0]
         self.dt = data.data[1]
         self.alpha = data.data[2]
         new_vel = Twist()
@@ -66,40 +82,59 @@ class Control(Node):  # Redefine node class
         self.time += self.dt/100
 
         ki = 0.0001
-        kd = 2.5
-        kp= 2.5   
-        
-        if not(self.aeb_data):
-            if (math.isnan(self.current_error) or math.isinf(self.current_error)):                    
-                    new_vel.linear.x = self.speed
-                    new_vel.angular.z = self.prev_vel            
-            else:
-                if self.front_ray <= self.desire_dist*2.3:
-                    new_vel.linear.x = self.current_vel.linear.x - self.current_vel.linear.x/6
-                    new_vel.angular.z = 3.0
-                elif (self.right_ray >= self.desire_dist*1.5 and self.left_ray >= self.desire_dist*1.5):
-                    new_vel.linear.x = self.current_vel.linear.x
-                    new_vel.angular.z = -1.7
-                else:            
-                    if self.iteration >= 2:
-                        new_vel.angular.z = self.current_error*kp + kd*self.derivative_error #+ self.integral_error*ki
-                        if math.isinf(new_vel.angular.z) or math.isnan(new_vel.angular.z):
-                            new_vel.angular.z=self.prev_vel
-                        self.prev_vel=-new_vel.angular.z                        
+        kd = 0.4
+        kp= 0.4        
 
-                        if self.current_vel.linear.x < self.speed:
-                            if self.iteration <= 10:
-                                new_vel.linear.x = self.speed*0.75
-                            else:
-                                new_vel.linear.x = self.current_vel.linear.x + self.current_vel.linear.x/8
-                        else:
-                            new_vel.linear.x = self.speed
+        if self.iteration == 6:
+            new_vel.angular.z = self.current_error*kp + kd*self.derivative_error 
+            new_vel.linear.x = self.speed     
+            self.iteration = 0       
+        else:
+            new_vel.angular.z = self.current_vel.angular.z 
+            new_vel.linear.x = self.current_vel.linear.x     
 
-                    else:
-                        new_vel.angular.z = self.alpha*0.50
-                        new_vel.linear.x = 0.3
+    #    if not(self.aeb_data):
+    #        if (math.isnan(self.current_error) or math.isinf(self.current_error)):                    
+    #                new_vel.linear.x = self.speed
+    #                new_vel.angular.z = self.prev_vel            
+    #        else:
+    #            if self.front_ray <= self.desire_dist*2.3:
+    #                new_vel.linear.x = self.current_vel.linear.x - self.current_vel.linear.x/6
+    #                new_vel.angular.z = 1.0
+    #            elif (self.right_ray >= self.desire_dist*1.5 and self.left_ray >= self.desire_dist*1.5):
+    #                new_vel.linear.x = self.current_vel.linear.x
+    #                new_vel.angular.z = -1.0
+    #            else:            
+    #                if self.iteration >= 2:
+    #                    new_vel.angular.z = self.current_error*kp + kd*self.derivative_error #+ self.integral_error*ki
+    #                    if math.isinf(new_vel.angular.z) or math.isnan(new_vel.angular.z):
+    #                        new_vel.angular.z=self.prev_vel
+    #                    self.prev_vel=-new_vel.angular.z                        
+
+    #                    if self.current_vel.linear.x < self.speed:
+    #                        if self.iteration <= 10:
+    #                            new_vel.linear.x = self.speed*0.75
+    #                        else:
+    #                            new_vel.linear.x = self.current_vel.linear.x + self.current_vel.linear.x/8
+    #                    else:
+    #                        new_vel.linear.x = self.speed
+
+    #                else:
+    #                    new_vel.angular.z = self.alpha*0.50
+    #                    new_vel.linear.x = 0.3
             
-            self.cmd_vel_pub.publish(new_vel)
+        new_vel.linear.x = self.limit(new_vel.linear.x)
+        new_vel.angular.z = self.limit(new_vel.angular.z)
+        self.cmd_vel_pub.publish(new_vel)
+
+    def limit (self, data):
+        if data >= 1.0:
+            return 1.0
+        elif data <= -1.0:
+            return -1.0
+        else:
+            return data
+
         
   
 

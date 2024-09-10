@@ -17,7 +17,7 @@ class TTC(Node):  # Redefine node class
         super().__init__("time_to_collision_node")  # Redefine node name
 
         self.cmd_vel_sub = self.create_subscription(Twist, "/cmd_vel", self.cmd_vel_callback, 10)
-        self.pose_subs = self.create_subscription(LaserScan, "/scan", self.scan_callback, 10)
+        self.pose_subs = self.create_subscription(LaserScan, "/Fscan", self.scan_callback, 10)
 
         self.aeb_pub = self.create_publisher(Twist, "/cmd_vel_aeb", 10)
         self.aeb_act = self.create_publisher(Bool, "/AEB", 10)
