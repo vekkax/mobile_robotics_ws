@@ -28,7 +28,7 @@ def generate_launch_description():
                     remappings=[('/cmd_vel','/cmd_vel_joy')]
     )
 
-    twist_mux_params = os.path.join(get_package_share_directory(package_name),'                     config','twist_mux.yaml')
+    twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','twist_mux.yaml')
     
     twist_mux_node = Node(package='twist_mux', 
                     executable='twist_mux',

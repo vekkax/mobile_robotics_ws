@@ -37,7 +37,8 @@ class Control(Node):  # Redefine node class
         self.left_ray = float()
         self.front_ray = float() 
         self.nw_it = 0
-        self.speed = 1.0
+        self.speed = 0.65
+
 
 
     def desire_dist_callback(self, data : Float32):
@@ -82,10 +83,10 @@ class Control(Node):  # Redefine node class
         self.time += self.dt/100
 
         ki = 0.0001
-        kd = 0.4
-        kp= 0.4        
+        kd = 0.7
+        kp= 0.8        
 
-        if self.iteration == 6:
+        if self.iteration == 2:
             new_vel.angular.z = self.current_error*kp + kd*self.derivative_error 
             new_vel.linear.x = self.speed     
             self.iteration = 0       

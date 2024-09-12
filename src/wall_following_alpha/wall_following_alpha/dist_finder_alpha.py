@@ -19,7 +19,7 @@ class DistFinder(Node):  # Redefine node class
         self.rays_pub = self.create_publisher(Float32MultiArray, "/Rays", 10)        
         self.distance_pub = self.create_publisher(Float32, "/Desire_dist", 10)
 
-        self.Trajd = 0.5
+        self.Trajd = 1.0
         self.CD = float()
         self.AB = float()
 
