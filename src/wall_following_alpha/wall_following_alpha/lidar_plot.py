@@ -22,8 +22,8 @@ class LidarPlot(Node):
         self.bars = None
 
     def scan_callback(self, msg):
-        angles_rad = np.arange(msg.angle_min, msg.angle_max, msg.angle_increment)
-        ranges = np.array(msg.ranges)
+        angles_rad = np.arange(msg.angle_min+np.pi, msg.angle_max+np.pi, msg.angle_increment)
+        ranges = np.array(self.transform_values(msg.ranges))
         
         # Convert angles from radians to degrees
         angles_deg = np.degrees(angles_rad)        
@@ -48,6 +48,11 @@ class LidarPlot(Node):
 
         self.ax.figure.canvas.draw()
         self.ax.figure.canvas.flush_events()
+    
+    def transform_values(self, data : LaserScan.ranges):
+        n= len(data)
+        transformed_values= data[180:]+data[:180]
+        return transformed_values
 
 def main(args=None):
     rclpy.init(args=args)

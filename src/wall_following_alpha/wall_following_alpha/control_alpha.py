@@ -37,13 +37,13 @@ class Control(Node):  # Redefine node class
         self.left_ray = float()
         self.front_ray = float() 
         self.nw_it = 0
-        self.speed = 0.65
+        self.speed = 0.70
 
 
 
     def desire_dist_callback(self, data : Float32):
         self.desire_dist = data.data
-    
+
     def scan_callback(self, data : LaserScan):
         self.right_ray = self.measurment(data,-46)
         self.left_ray = self.measurment(data,44)
@@ -71,7 +71,7 @@ class Control(Node):  # Redefine node class
         self.aeb_data=data.data
 
     def error_callback(self, data : Float32MultiArray):
-        self.iteration += 1
+       # self.iteration += 1
         self.current_error = -data.data[0]
         self.dt = data.data[1]
         self.alpha = data.data[2]
@@ -82,17 +82,17 @@ class Control(Node):  # Redefine node class
         self.integral_error += self.current_error / self.dt
         self.time += self.dt/100
 
-        ki = 0.0001
-        kd = 0.7
-        kp= 0.8        
+        ki = 0.0000001
+        kd = 1.2
+        kp= 0.8       
 
-        if self.iteration == 2:
-            new_vel.angular.z = self.current_error*kp + kd*self.derivative_error 
-            new_vel.linear.x = self.speed     
-            self.iteration = 0       
-        else:
-            new_vel.angular.z = self.current_vel.angular.z 
-            new_vel.linear.x = self.current_vel.linear.x     
+       # if self.iteration == 1:
+        new_vel.angular.z = self.current_error*kp + kd*self.derivative_error  #+ki*self.integral_error
+        new_vel.linear.x = self.speed     
+        #self.iteration = 0       
+        #else:
+        #    new_vel.angular.z = self.current_vel.angular.z 
+        #    new_vel.linear.x = self.current_vel.linear.x     
 
     #    if not(self.aeb_data):
     #        if (math.isnan(self.current_error) or math.isinf(self.current_error)):                    

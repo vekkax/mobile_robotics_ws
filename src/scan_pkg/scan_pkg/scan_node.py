@@ -1,71 +1,76 @@
 #!/usr/bin/env python3
 
-#libreria cliente de python
-import json
-import os
 import rclpy
-from math import pow
+import math
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
-import math
-from std_msgs.msg import Float32MultiArray
 import statistics as sts
 
-class ScanNodeG01(Node): # Redefine node class
+class ScanNodeG01(Node):
     def __init__(self):
+        super().__init__("scan_node")
 
-        super().__init__("scan_node") # Redefine node name
+        # Subscribing and publishing topics
+        self.scan_subs = self.create_subscription(LaserScan, '/scan', self.scan_callback, 10)
+        self.scan_pub = self.create_publisher(LaserScan, "/Fscan", 10)
 
-        self.scan_subs = self.create_subscription(LaserScan,'/scan',self.scan_callback,10)
-        self.scan_pub = self.create_publisher(LaserScan, "/Fscan", 10) 
+        self.msg = LaserScan()
 
-        
-        self.msg = LaserScan()   
-
-    def scan_callback(self,data:LaserScan):
+    def scan_callback(self, data: LaserScan):
         self.msg = data
         ranges = self.msg.ranges
+
+        # Handle NaN and infinite values
         for i in range(len(ranges)):
             if math.isnan(ranges[i]):
-                ranges[i] = 0.25
-            elif ranges[i]==math.inf:
-                ranges[i] = 15.0
+                ranges[i] = 0.1  # Replace NaN with small value (e.g., 0.1)
+            elif ranges[i] == math.inf:
+                ranges[i] = 15.0  # Replace infinite values with maximum range
 
-        self.msg.ranges = ranges
+        # Apply median filtering to smooth the values
         for i in range(len(ranges)):
-            if i == 0 or i == 1 or i == 2 or i == 3 or i == 4:
-                self.msg.ranges[i] = sts.mean(self.msg.ranges[-3:-1])
-            else: 
-                self.msg.ranges[i] = self.measurment(self.msg,i)
+            if i < 5:  # For the first few rays
+                self.msg.ranges[i] = self.median_filter(ranges, i, window_size=5)
+            else:  # For other rays, apply the measurement function or median filter
+                self.msg.ranges[i] = self.median_filter(ranges, i, window_size=5)
 
+        # Publish the filtered message
         self.scan_pub.publish(self.msg)
 
-    def measurment(self, data, mid):
-        rays = data.ranges[mid-5:mid+5]        
-        if all(ray==15.0 for ray in rays):  
-            return 15.0
-        else:  
-            delete = []
-            for i in range(len(rays)):
-                if rays[i] == 15.0:
-                    delete.append(i)
-            for ele in sorted(delete, reverse = True): 
-                del rays[ele]
-
-            return sts.mean(rays)
+    def median_filter(self, ranges, index, window_size=10):
+        """
+        Applies a median filter to the ranges at the given index.
+        
+        Args:
+            ranges (list): List of LiDAR range values.
+            index (int): The current index of the range value to filter.
+            window_size (int): The size of the window for the median filter (default is 5).
             
+        Returns:
+            float: The median value of the window.
+        """
+        # Ensure indices don't go out of bounds
+        start = max(0, index - window_size // 2)
+        end = min(len(ranges), index + window_size // 2 + 1)
 
+        # Filter out invalid values (e.g., 15.0 as max range)
+        valid_rays = [r for r in ranges[start:end] if r != 15.0]
+        
+        # If all values are invalid, return the default maximum range
+        if len(valid_rays) == 0:
+            return 15.0
+
+        # Return the median of the valid values
+        return sts.median(valid_rays)
 
 def main(args=None):
-
-    #inicializador del nodo
     rclpy.init(args=args)
 
-    #objeto nodo
-    node = ScanNodeG01() # object definition (creation)
+    # Create node object
+    node = ScanNodeG01()
 
+    # Keep the node running
     rclpy.spin(node)
-    
 
     rclpy.shutdown()
 

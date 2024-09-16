@@ -4,6 +4,7 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
+from std_msgs.msg import Bool
 from sensor_msgs.msg import LaserScan
 
 import math
@@ -12,16 +13,17 @@ class FTG(Node):  # Redefine node class
     def __init__(self):
         super().__init__("follow_the_gap_node")  # Redefine node name
         
-        self.pose_subs = self.create_subscription(LaserScan, "/scan", self.scan_callback, 10)
+        self.pose_subs = self.create_subscription(LaserScan, "/Fscan", self.scan_callback, 10)
         self.vel_subs = self.create_subscription(Twist, "/cmd_vel", self.vel_callback, 10)
         self.cmd_pub = self.create_publisher(Twist, "/cmd_vel_nav",10)
+        self.AEB_sub=self.create_subscription(Bool, "/AEB", self.AEB_callback,10)
         
         self.iteration = 0
         self.ranges = []
         self.min_index = 0
-        self.radius = 0.25
-        self.threshold = 2.7
-        self.colission_threshold = 0.5
+        self.radius = 0.4
+        self.threshold = 1.0
+        self.colission_threshold = 0.4
         self.dist = 0.0 
         self.data = []  
 
@@ -36,17 +38,21 @@ class FTG(Node):  # Redefine node class
 
         self.previous_error = 0.0
         self.dt= 0.1
+        self.aeb=False
 
         self.velocity = Twist()
 
+    def AEB_callback(self, data : Bool):
+        self.aeb=data.data
 
     def vel_callback(self, data : Twist):
         self.velocity = data
 
     def scan_callback(self, data : LaserScan):
-        self.data = data.ranges
+        self.data = self.transform_values(data.ranges)
+
         self.iteration += 1
-        if self.iteration <= 5:
+        if self.iteration <=1:
             val = 135
         else:
             val = 30
@@ -71,8 +77,9 @@ class FTG(Node):  # Redefine node class
             self.max_gap, self.max_gap_end_index = self.find_best_subsection(self.ranges)
             self.error = (self.max_gap_end_index-self.max_gap/2) + min_range - 180
             #print(error)
+           
             self.control(self.error)
-
+           
 
     def find_best_subsection(self, arr):
         max_sum = 0
@@ -100,29 +107,41 @@ class FTG(Node):  # Redefine node class
 
         return max_width, max_end_index
 
-        
+    def transform_values(self, data : LaserScan.ranges):
+        n= len(data)
+        transformed_values= data[180:]+data[:180]
+        return transformed_values
+    
+    def limit (self, data, limit:float):
+        if data >= limit:
+            return limit
+        elif data <= -limit:
+            return -limit
+        else:
+            return data
 
     def control(self, error): 
             
-            kp=0.03
-            kd = 0.003
+            kp=0.025
+            kd = 0.007
             
             error_d = (self.error - self.previous_error)/self.dt
             self.previous_error=self.error
             
             new_vel=Twist()
 
-            threshold = 2.3
+            threshold = 0.5
 
+            
             if all(value < threshold for value in self.data[160:200]):
                 if all(value < threshold*(1/3) for value in self.data[160:200]):             
                     new_vel.linear.x = self.velocity.linear.x*0.3
                 else:
                     new_vel.linear.x = self.velocity.linear.x*0.7                
                 if max(self.data[44:89]) > max(self.data[269:314]):
-                    new_vel.angular.z = -3.0      
+                    new_vel.angular.z = 0.1    
                 else:
-                    new_vel.angular.z = 3.0
+                    new_vel.angular.z = -0.1
             elif self.data[135] < self.colission_threshold:
                 new_vel.linear.x = self.linear_speed*0.75
                 new_vel.angular.z = self.angular_speed
@@ -131,22 +150,25 @@ class FTG(Node):  # Redefine node class
                 new_vel.angular.z = -self.angular_speed
             else:
                 if self.velocity.linear.x < self.linear_speed:
-                    new_vel.linear.x = self.velocity.linear.x + 0.4
+                    new_vel.linear.x = self.velocity.linear.x + 0.7
                 else:
                     new_vel.linear.x = self.linear_speed
                 new_vel.angular.z = kp*error + kd*error_d
+            
+            
+            
 
+            new_vel.angular.z=self.limit(new_vel.angular.z,1.0)
+            new_vel.linear.x=self.limit(new_vel.linear.x,0.7)
 
             self.cmd_pub.publish(new_vel)
-
-        
-
 
     def isInside(self, circle_x, circle_y, rad, x, y):
         if ((x - circle_x) * (x - circle_x) + (y - circle_y) * (y - circle_y) <= rad * rad):
             return True
         else:
             return False               
+
 
 
 def main(args=None):
