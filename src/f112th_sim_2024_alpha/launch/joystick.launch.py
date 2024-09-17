@@ -50,7 +50,7 @@ def generate_launch_description():
                     executable='scan_node',
     )    
 
-    ftg = Node(package='follow_the_gap', 
+    FTG_node = Node(package='follow_the_gap', 
                     executable='follow_the_gap_node',
     ) 
     # Launch them all!
@@ -58,8 +58,8 @@ def generate_launch_description():
         joy_node,
         teleop_node,
         twist_mux_node,
-        #Wall_following,
-        ftg,
+        Wall_following,
+        #FTG_node,
         TTC_node,
         scan_node,        
     ])

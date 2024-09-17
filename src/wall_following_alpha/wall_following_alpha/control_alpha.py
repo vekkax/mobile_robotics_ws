@@ -45,9 +45,10 @@ class Control(Node):  # Redefine node class
         self.desire_dist = data.data
 
     def scan_callback(self, data : LaserScan):
-        self.right_ray = self.measurment(data,-46)
-        self.left_ray = self.measurment(data,44)
-        self.front_ray = self.measurment(data,0)
+        self.right_ray_avg = self.measurment(data,-69)
+        self.left_ray_avg = self.measurment(data,69)
+        self.front_ray_avg = self.measurment(data,0)
+        
 
     def measurment(self, data, mid):
         rays = data.ranges[mid-5:mid+5]
@@ -83,12 +84,14 @@ class Control(Node):  # Redefine node class
         self.time += self.dt/100
 
         ki = 0.0000001
-        kd = 1.2
-        kp= 0.8       
+        kd = 0.8
+        kp= 0.3 #0.8       
 
        # if self.iteration == 1:
         new_vel.angular.z = self.current_error*kp + kd*self.derivative_error  #+ki*self.integral_error
-        new_vel.linear.x = self.speed     
+        new_vel.linear.x = self.speed 
+
+        ############ SIMULATION ############    
         #self.iteration = 0       
         #else:
         #    new_vel.angular.z = self.current_vel.angular.z 
@@ -123,16 +126,27 @@ class Control(Node):  # Redefine node class
     #                else:
     #                    new_vel.angular.z = self.alpha*0.50
     #                    new_vel.linear.x = 0.3
+
+    ############ REAL CAR ############
+        if self.front_ray_avg <= 0.5:
+            if self.left_ray_avg > self.right_ray_avg:
+                new_vel.angular.z = 1.0
+            else:
+                new_vel.angular.z = -1.0
+        elif self.left_ray_avg >= 3.0:            
+            new_vel.angular.z = 0.8
+        elif self.right_ray_avg >= 3.0 and self.front_ray_avg <= 1.0:
+            new_vel.angular.z = -0.8
             
-        new_vel.linear.x = self.limit(new_vel.linear.x)
-        new_vel.angular.z = self.limit(new_vel.angular.z)
+        new_vel.linear.x = self.limit(new_vel.linear.x,1.0)
+        new_vel.angular.z = self.limit(new_vel.angular.z,0.7)
         self.cmd_vel_pub.publish(new_vel)
 
-    def limit (self, data):
-        if data >= 1.0:
-            return 1.0
-        elif data <= -1.0:
-            return -1.0
+    def limit (self, data, limit:float):
+        if data >= limit:
+            return limit
+        elif data <= -limit:
+            return -limit
         else:
             return data
 

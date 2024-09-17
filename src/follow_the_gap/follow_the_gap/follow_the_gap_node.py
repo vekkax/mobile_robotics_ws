@@ -21,14 +21,14 @@ class FTG(Node):  # Redefine node class
         self.iteration = 0
         self.ranges = []
         self.min_index = 0
-        self.radius = 0.4
-        self.threshold = 1.0
-        self.colission_threshold = 0.4
+        self.radius = 0.6
+        self.threshold = 0.75 # Security threshold for raw data
+        self.colission_threshold = 0.75 # Front diagonal rays threshold
         self.dist = 0.0 
         self.data = []  
 
-        self.linear_speed = 2.0
-        self.angular_speed = 1.0
+        self.linear_speed = 0.7
+        self.angular_speed = 0.3
 
         self.max_gap_end_index= 0
         self.max_gap = 0     
@@ -77,8 +77,11 @@ class FTG(Node):  # Redefine node class
             self.max_gap, self.max_gap_end_index = self.find_best_subsection(self.ranges)
             self.error = (self.max_gap_end_index-self.max_gap/2) + min_range - 180
             #print(error)
-           
-            self.control(self.error)
+
+            if not self.aeb:
+                self.control(self.error)
+            
+
            
 
     def find_best_subsection(self, arr):
@@ -122,7 +125,7 @@ class FTG(Node):  # Redefine node class
 
     def control(self, error): 
             
-            kp=0.025
+            kp=0.00025
             kd = 0.007
             
             error_d = (self.error - self.previous_error)/self.dt
@@ -130,33 +133,28 @@ class FTG(Node):  # Redefine node class
             
             new_vel=Twist()
 
-            threshold = 0.5
+            #threshold = 0.5
 
             
-            if all(value < threshold for value in self.data[160:200]):
-                if all(value < threshold*(1/3) for value in self.data[160:200]):             
-                    new_vel.linear.x = self.velocity.linear.x*0.3
-                else:
-                    new_vel.linear.x = self.velocity.linear.x*0.7                
-                if max(self.data[44:89]) > max(self.data[269:314]):
-                    new_vel.angular.z = 0.1    
-                else:
-                    new_vel.angular.z = -0.1
-            elif self.data[135] < self.colission_threshold:
-                new_vel.linear.x = self.linear_speed*0.75
+            #if all(value < threshold for value in self.data[160:200]):
+            #    if all(value < threshold*(1/3) for value in self.data[160:200]):             
+            #        new_vel.linear.x = self.velocity.linear.x*0.3
+            #    else:
+            #        new_vel.linear.x = self.velocity.linear.x*0.7                
+            #    if max(self.data[44:89]) > max(self.data[269:314]):
+            #        new_vel.angular.z = 0.1    
+            #    else:
+            #        new_vel.angular.z = -0.1
+            
+            if self.data[135] < self.colission_threshold:
+                new_vel.linear.x = self.linear_speed
                 new_vel.angular.z = self.angular_speed
             elif self.data[225] < self.colission_threshold:
-                new_vel.linear.x = self.linear_speed*0.75
+                new_vel.linear.x = self.linear_speed
                 new_vel.angular.z = -self.angular_speed
             else:
-                if self.velocity.linear.x < self.linear_speed:
-                    new_vel.linear.x = self.velocity.linear.x + 0.7
-                else:
-                    new_vel.linear.x = self.linear_speed
-                new_vel.angular.z = kp*error + kd*error_d
-            
-            
-            
+                new_vel.linear.x = self.linear_speed
+                new_vel.angular.z = kp*error + kd*error_d           
 
             new_vel.angular.z=self.limit(new_vel.angular.z,1.0)
             new_vel.linear.x=self.limit(new_vel.linear.x,0.7)

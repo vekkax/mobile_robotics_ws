@@ -8,7 +8,7 @@ twist_mux:
       joystick  : 
         topic   : cmd_vel_joy
         timeout : 0.5
-        priority: 100
+        priority: 110
       keyboard  : 
         topic   : cmd_vel_key
         timeout : 0.5
@@ -16,4 +16,4 @@ twist_mux:
       aeb  : 
         topic   : cmd_vel_aeb
         timeout : 0.5
-        priority: 90
+        priority: 100
