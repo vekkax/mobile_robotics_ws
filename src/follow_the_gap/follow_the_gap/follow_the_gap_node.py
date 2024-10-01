@@ -5,6 +5,8 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Bool
+from std_msgs.msg import Int32MultiArray, Float32MultiArray
+
 from sensor_msgs.msg import LaserScan
 
 import math
@@ -16,18 +18,19 @@ class FTG(Node):  # Redefine node class
         self.pose_subs = self.create_subscription(LaserScan, "/Fscan", self.scan_callback, 10)
         self.vel_subs = self.create_subscription(Twist, "/cmd_vel", self.vel_callback, 10)
         self.cmd_pub = self.create_publisher(Twist, "/cmd_vel_nav",10)
+        self.gap = self.create_publisher(Int32MultiArray, "/scan/gap",10)
+        self.ranges_pub = self.create_publisher(Float32MultiArray, "/scan/ranges",10)
         self.AEB_sub=self.create_subscription(Bool, "/AEB", self.AEB_callback,10)
-        
         self.iteration = 0
         self.ranges = []
         self.min_index = 0
-        self.radius = 0.6
-        self.threshold = 0.75 # Security threshold for raw data
+        self.radius = 0.5
+        self.threshold = 1.0 # Security threshold for raw data
         self.colission_threshold = 0.75 # Front diagonal rays threshold
         self.dist = 0.0 
         self.data = []  
 
-        self.linear_speed = 0.7
+        self.linear_speed = 1.0
         self.angular_speed = 0.3
 
         self.max_gap_end_index= 0
@@ -51,17 +54,14 @@ class FTG(Node):  # Redefine node class
     def scan_callback(self, data : LaserScan):
         self.data = self.transform_values(data.ranges)
 
-        self.iteration += 1
-        if self.iteration <=1:
-            val = 135
-        else:
-            val = 30
+        #self.iteration += 1
+        val = 110
         min_range= val - 1
         max_range= 360 - 1 - min_range
 
         if not(self.iteration % 1):
-            self.iteration = 0
-            self.ranges = [x - self.radius for x in data.ranges[min_range:max_range]]
+            #self.iteration = 0
+            self.ranges = [x - self.radius for x in self.data[min_range:max_range]]
             self.min_index = self.ranges.index(min(self.ranges))
 
             for i in range(len(self.ranges)):
@@ -74,12 +74,16 @@ class FTG(Node):  # Redefine node class
                 if self.isInside(self.x[self.min_index],self.y[self.min_index],self.radius,self.x[i],self.y[i]) or self.ranges[i] < self.threshold:
                     self.ranges[i] = 0.0
             
+            self.ranges_pub.publish(Float32MultiArray(data=self.ranges))
+            
             self.max_gap, self.max_gap_end_index = self.find_best_subsection(self.ranges)
+            self.gap.publish(Int32MultiArray(data=[self.max_gap, self.max_gap_end_index]))
+
             self.error = (self.max_gap_end_index-self.max_gap/2) + min_range - 180
             #print(error)
 
-            if not self.aeb:
-                self.control(self.error)
+            #if not self.aeb:
+            self.control(self.error)
             
 
            
@@ -111,7 +115,6 @@ class FTG(Node):  # Redefine node class
         return max_width, max_end_index
 
     def transform_values(self, data : LaserScan.ranges):
-        n= len(data)
         transformed_values= data[180:]+data[:180]
         return transformed_values
     
@@ -125,8 +128,8 @@ class FTG(Node):  # Redefine node class
 
     def control(self, error): 
             
-            kp=0.00025
-            kd = 0.007
+            kp= 0.02
+            kd = 0.005
             
             error_d = (self.error - self.previous_error)/self.dt
             self.previous_error=self.error
@@ -146,18 +149,21 @@ class FTG(Node):  # Redefine node class
             #    else:
             #        new_vel.angular.z = -0.1
             
-            if self.data[135] < self.colission_threshold:
-                new_vel.linear.x = self.linear_speed
-                new_vel.angular.z = self.angular_speed
-            elif self.data[225] < self.colission_threshold:
-                new_vel.linear.x = self.linear_speed
-                new_vel.angular.z = -self.angular_speed
-            else:
-                new_vel.linear.x = self.linear_speed
-                new_vel.angular.z = kp*error + kd*error_d           
+            #if self.data[135] < self.colission_threshold:
+            #    new_vel.linear.x = self.linear_speed
+            #    new_vel.angular.z = self.angular_speed
+            #elif self.data[225] < self.colission_threshold:
+            #    new_vel.linear.x = self.linear_speed
+            #    new_vel.angular.z = -self.angular_speed
+            #else:
+            #    new_vel.linear.x = self.linear_speed
+            
+
+            new_vel.angular.z = kp*error + kd*error_d           
+            new_vel.linear.x = self.linear_speed
 
             new_vel.angular.z=self.limit(new_vel.angular.z,1.0)
-            new_vel.linear.x=self.limit(new_vel.linear.x,0.7)
+            new_vel.linear.x=self.limit(new_vel.linear.x,0.80)
 
             self.cmd_pub.publish(new_vel)
 

@@ -58,8 +58,8 @@ def generate_launch_description():
         joy_node,
         teleop_node,
         twist_mux_node,
-        Wall_following,
-        #FTG_node,
+        #Wall_following,
+        FTG_node,
         TTC_node,
         scan_node,        
     ])
