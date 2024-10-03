@@ -1,1 +1,0 @@
-/home/vekkaz/mobile_robotics_ws/src/f112th_sim_2024_alpha/launch/rsp.launch.py
