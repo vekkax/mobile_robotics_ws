@@ -129,12 +129,15 @@ class Control(Node):  # Redefine node class
 
     ############ REAL CAR ############
         if self.front_ray_avg <= 0.5:
+            
             if self.left_ray_avg > self.right_ray_avg:
                 new_vel.angular.z = 1.0
             else:
                 new_vel.angular.z = -1.0
+
         elif self.left_ray_avg >= 3.0:            
             new_vel.angular.z = 0.8
+
         elif self.right_ray_avg >= 3.0 and self.front_ray_avg <= 1.0:
             new_vel.angular.z = -0.8
             

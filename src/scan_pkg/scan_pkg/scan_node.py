@@ -11,8 +11,8 @@ class ScanNodeG01(Node):
         super().__init__("scan_node")
 
         # Subscribing and publishing topics
-        self.scan_subs = self.create_subscription(LaserScan, '/scan', self.scan_callback, 10)
-        self.scan_pub = self.create_publisher(LaserScan, "/Fscan", 10)
+        self.scan_subs = self.create_subscription(LaserScan, '/alpha/scan', self.scan_callback, 10)
+        self.scan_pub = self.create_publisher(LaserScan, "/alpha/Fscan", 10)
 
         self.msg = LaserScan()
 

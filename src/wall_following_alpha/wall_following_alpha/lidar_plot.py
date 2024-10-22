@@ -10,7 +10,7 @@ class LidarPlot(Node):
         super().__init__('lidar_plot')
 
         # Subscriptions
-        self.subscription = self.create_subscription(LaserScan, '/Fscan', self.scan_callback, 1)
+        self.subscription = self.create_subscription(LaserScan, '/alpha/Fscan', self.scan_callback, 1)
         self.gap = self.create_subscription(Int32MultiArray, "/scan/gap", self.gap_callback, 2)
         self.ftg_subscription = self.create_subscription(Float32MultiArray, "/scan/ranges", self.ftg_ranges_callback, 2)
 

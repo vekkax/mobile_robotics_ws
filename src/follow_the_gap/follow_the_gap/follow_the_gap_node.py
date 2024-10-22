@@ -83,10 +83,7 @@ class FTG(Node):  # Redefine node class
             #print(error)
 
             #if not self.aeb:
-            self.control(self.error)
-            
-
-           
+            self.control(self.error)                      
 
     def find_best_subsection(self, arr):
         max_sum = 0
@@ -173,8 +170,6 @@ class FTG(Node):  # Redefine node class
         else:
             return False               
 
-
-
 def main(args=None):
 
     # inicializador del nodo
@@ -186,7 +181,6 @@ def main(args=None):
     rclpy.spin(node)
 
     rclpy.shutdown()
-
 
 if __name__ == "__main__":
     main()

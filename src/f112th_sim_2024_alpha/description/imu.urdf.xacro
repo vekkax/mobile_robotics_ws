@@ -55,7 +55,7 @@
                 <initialOrientationAsReference>false</initialOrientationAsReference>
                 <ros>
                     <!--Output topic: scan-->
-                    <remapping>~/out:=imu</remapping>
+                    <remapping>~/out:=/alpha/imu</remapping>
                 </ros>    
 
 

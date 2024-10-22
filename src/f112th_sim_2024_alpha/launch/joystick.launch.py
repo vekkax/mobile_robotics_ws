@@ -19,13 +19,14 @@ def generate_launch_description():
     joy_node = Node(package='joy', 
                     executable='joy_node',
                     parameters=[joy_params],
+                    remappings=[('/joy','/alpha/joy')]
     )
 
     teleop_node = Node(package='teleop_twist_joy', 
                     executable='teleop_node',
                     name="teleop_node",
                     parameters=[joy_params],
-                    remappings=[('/cmd_vel','/cmd_vel_joy')]
+                    remappings=[('/cmd_vel','/alpha/cmd_vel_joy'),('/joy','/alpha/joy')]
     )
 
     twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','twist_mux.yaml')
@@ -33,7 +34,7 @@ def generate_launch_description():
     twist_mux_node = Node(package='twist_mux', 
                     executable='twist_mux',
                     parameters=[twist_mux_params,{'use_sim_time': False}],
-                    remappings=[('/cmd_vel_out','cmd_vel')]
+                    remappings=[('/cmd_vel_out','/alpha/cmd_vel')]
     )
 
     TTC_node = Node(package='time_to_collision',
@@ -59,7 +60,7 @@ def generate_launch_description():
         teleop_node,
         twist_mux_node,
         #Wall_following,
-        FTG_node,
-        TTC_node,
+        #FTG_node,
+        #TTC_node,
         scan_node,        
     ])

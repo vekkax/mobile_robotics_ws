@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<robot name="ackrm_robot" 
+  xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!--MATERIALS-->
+  
+
+  <!-- XACRO PROPERTIES -->
+  <xacro:property name="PI" value="3.1415926535897931"/>
+  <xacro:property name="base_length" value="0.8" />
+  <xacro:property name="base_width" value="0.4" />
+  <xacro:property name="base_heigth" value="0.17" />
+  <xacro:property name="base_mass" value="${base_length*base_width*base_heigth*500}" />
+  <xacro:property name="wheel_radius" value="0.17" />
+  <xacro:property name="wheel_heigth" value="0.05" />
+  <xacro:property name="wheel_mass" value="${pi*wheel_radius*wheel_radius*wheel_heigth*500}" />
+  <xacro:property name="pivot_radius" value="${wheel_heigth/2-0.01}" />
+  <xacro:property name="pivot_heigth" value="${1.4*wheel_radius}" />
+  <xacro:property name="pivot_mass" value="${pi*pivot_radius*pivot_radius*pivot_heigth*500}" />
+
+  <!-- XACRO LIBRARIES -->
+  <xacro:include filename="inertia.xacro" />
+  <xacro:include filename="cylinder_wheel.xacro" />
+
+
+<!-- Example link -->
+<link name="base_root">
+</link>
+
+<joint name="base_root_joint" type="fixed">
+  <parent link="base_root"/>
+  <child link="base_link"/>
+  <origin xyz="0 0 0"/>    
+</joint>
+
+  <!-- BASE LINK DEFINITION -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_heigth}" />
+      </geometry>
+      <material name="white" />
+    </visual>
+    <collision>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_heigth}" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="${base_mass}" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <xacro:box_inertia m="${base_mass}" l="${base_length}" w="${base_width}" h="${base_heigth}"/>
+    </inertial>
+  </link>
+
+  <!-- VIRTUAL WHEELS-->
+  <!-- virtual front wheel -->
+
+  <link name="virtual_front_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
+      <geometry>
+        <cylinder length="0.01" radius="${wheel_radius}"/>
+      </geometry>
+      <material name="invisible"/>
+    </visual>
+  </link>
+
+  <joint name="virtual_front_wheel_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="virtual_front_wheel"/>
+    <origin xyz="0.35 0 0" rpy="0 0 ${PI/2}"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-${PI/4}" upper="${PI/4}" effort="100.0" velocity="0.0"/>
+    <dynamics damping="0.2"/>
+  </joint>
+
+  <!-- virtual back wheel -->
+
+  <link name="virtual_back_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
+      <geometry>
+        <cylinder length="0.01" radius="${wheel_radius}"/>
+      </geometry>
+      <material name="invisible"/>
+    </visual>
+  </link>
+
+  <joint name="virtual_back_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="virtual_back_wheel"/>
+    <origin xyz="-0.35 0 0" rpy="0 0 ${PI/2}"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="100.0" velocity="100.0"/>
+    <dynamics damping="0.2"/>
+  </joint>
+
+  <!-- WHEELS MACRO CALL -->
+  <xacro:cylinder_wheel name="back_right" 
+    wr="${wheel_radius}" 
+    wh="${wheel_heigth}" 
+    wm="${wheel_mass}" 
+    parent="base_link" 
+    xpos="-0.35" 
+    ypos="-0.35"
+    mimic="back" 
+    axis= "1 0 0"/>
+
+  <xacro:cylinder_wheel name="back_left" 
+    wr="${wheel_radius}" 
+    wh="${wheel_heigth}" 
+    wm="${wheel_mass}" 
+    parent="base_link" 
+    xpos="-0.35" 
+    ypos="0.35" 
+    mimic="back"
+    axis="1 0 0"/>
+
+  <xacro:cylinder_wheel name="front_right" 
+    wr="${wheel_radius}" 
+    wh="${wheel_heigth}" 
+    wm="${wheel_mass}" 
+    parent="base_link" 
+    xpos="0.35" 
+    ypos="0.35" 
+    mimic="front" 
+    axis="0 0 1"/>
+
+  <xacro:cylinder_wheel name="front_left" 
+    wr="${wheel_radius}" 
+    wh="${wheel_heigth}" 
+    wm="${wheel_mass}" 
+    parent="base_link" 
+    xpos="0.35" 
+    ypos="-0.35"
+    mimic="front" 
+    axis="0 0 1"/>
+
+</robot>

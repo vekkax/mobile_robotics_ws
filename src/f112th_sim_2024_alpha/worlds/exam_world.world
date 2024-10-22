@@ -1576,7 +1576,7 @@
         <max_wheel_acceleration>10.0</max_wheel_acceleration>
         <odometry_frame>odom</odometry_frame>
         <robot_base_frame>base_link</robot_base_frame>
-        <publish_odom>1</publish_odom>
+        <publish_odom>0</publish_odom>
         <publish_odom_tf>1</publish_odom_tf>
         <publish_wheel_tf>1</publish_wheel_tf>
       </plugin>
