@@ -13,11 +13,13 @@ class OdomToTFNode(Node):
         self.tf_broadcaster = TransformBroadcaster(self)
 
         # Subscribe to the odometry topic
-        self.odom_sub = self.create_subscription(Pose,'/robot2/pose',self.odom_callback,10)
+        self.odom_sub = self.create_subscription(Pose,'/robot1/pose',self.odom_callback,10)
+        self.odom_pub = self.create_publisher(Odometry,'/alpha/odom',10)
 
         self.timer= self.create_timer(0.1, self.timer_callback)
         self.transform = TransformStamped()
         self.msg=Pose()
+        self.odom=Odometry()
 
 
     def odom_callback(self, msg: Pose):
@@ -36,14 +38,24 @@ class OdomToTFNode(Node):
         self.transform.transform.translation.y = msg.position.y
         self.transform.transform.translation.z = msg.position.z
 
+        self.odom.pose.pose.position.x = msg.position.x
+        self.odom.pose.pose.position.y = msg.position.y
+        self.odom.pose.pose.position.z = msg.position.z
+
         # Set the rotation (orientation from the odometry message)
         self.transform.transform.rotation.x = msg.orientation.x
         self.transform.transform.rotation.y = msg.orientation.y
         self.transform.transform.rotation.z = msg.orientation.z
         self.transform.transform.rotation.w = msg.orientation.w
 
+        self.odom.pose.pose.orientation.x = msg.orientation.x
+        self.odom.pose.pose.orientation.y = msg.orientation.y
+        self.odom.pose.pose.orientation.z = msg.orientation.z
+        self.odom.pose.pose.orientation.w = msg.orientation.w
+
         # Broadcast the transform
         self.tf_broadcaster.sendTransform(self.transform)
+        self.odom_pub.publish(self.odom)
 
 
 def main(args=None):

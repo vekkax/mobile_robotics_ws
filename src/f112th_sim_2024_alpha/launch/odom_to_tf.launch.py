@@ -4,7 +4,7 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
-    urdf_file = os.path.join(get_package_share_directory('f112th_sim_2024_alpha'), 'description', 'odom_to_tf.urdf.xacro')
+    urdf_file = os.path.join(get_package_share_directory('f112th_sim_2024_alpha'), 'description', 'odom_tf_robot','odom_to_tf.urdf.xacro')
 
     return LaunchDescription([
         # Start the robot_state_publisher to publish the URDF transforms

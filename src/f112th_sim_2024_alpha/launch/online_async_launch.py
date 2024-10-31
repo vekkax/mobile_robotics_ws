@@ -28,6 +28,7 @@ def generate_launch_description():
         ],
         package='slam_toolbox',
         executable='async_slam_toolbox_node',
+        remappings=[('/odom','/alpha/odom')],
         name='slam_toolbox',
         output='screen')
 
