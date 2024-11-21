@@ -20,7 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'nav_2024_alpha_node = nav_2024_alpha.nav_2024_alpha_node:main'
+            'nav_2024_alpha_node = nav_2024_alpha.nav_2024_alpha_node:main',
+            'nav_control_alpha = nav_2024_alpha.nav_control_alpha:main',
+            'nav_rozo = nav_2024_alpha.nav_rozo:main',
         ],
     },
 )

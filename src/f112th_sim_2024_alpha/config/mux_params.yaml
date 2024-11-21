@@ -1,0 +1,19 @@
+twist_mux:
+  ros__parameters:
+    topics:
+      navigation:
+        topic   : cmd_vel
+        timeout : 0.5
+        priority: 10
+      joystick  : 
+        topic   : alpha/cmd_vel_joy
+        timeout : 0.5
+        priority: 110
+      keyboard  : 
+        topic   : alpha/cmd_vel_key
+        timeout : 0.5
+        priority: 50
+      aeb  : 
+        topic   : alpha/cmd_vel_aeb
+        timeout : 0.5
+        priority: 100

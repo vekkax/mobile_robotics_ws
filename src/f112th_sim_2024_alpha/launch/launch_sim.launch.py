@@ -76,6 +76,6 @@ def generate_launch_description():
         spawn_entity,
         joystick,
         twist_mux_node,
-        #rviz_arg,
-        #rviz_node,
+        rviz_arg,
+        rviz_node,
     ])
